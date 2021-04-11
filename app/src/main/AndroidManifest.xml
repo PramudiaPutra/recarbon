@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReCarbon">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".SplashScreenActivity"
+        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,4 +21,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
