@@ -33,7 +33,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="94dp"
         android:padding="32dp"
         android:background="@drawable/signin_layout_bg"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/sign_in"
+            android:text="@string/sign_up"
             android:textColor="@color/font_color_bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/username_email"
+            android:text="@string/username"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +77,30 @@
             android:importantForAutofill="no" />
 
         <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/email"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_username_signup" />
+
+        <EditText
+            android:labelFor="@id/edt_email_signup"
+            android:id="@+id/edt_email_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_email"
+            android:importantForAutofill="no" />
+
+        <TextView
             android:id="@+id/tv_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +110,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edt_username_signup" />
+            app:layout_constraintTop_toBottomOf="@id/edt_email_signup" />
 
         <EditText
             android:labelFor="@id/edt_password_signup"
@@ -109,7 +132,7 @@
             android:background="@drawable/custom_button"
             android:fontFamily="@font/poppins_medium"
             android:padding="8dp"
-            android:text="@string/sign_in"
+            android:text="@string/sign_up"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -123,22 +146,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/sign_up"
+            android:text="@string/sign_in"
             android:textColor="@color/font_color_bold"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_SignUp" />
-
-        <TextView
-            android:id="@+id/tv_ForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/forgot_password"
-            android:textColor="@color/grey_thin_recarbon"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_SignIn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_SignIn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
