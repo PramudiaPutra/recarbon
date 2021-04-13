@@ -13,13 +13,4 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    fun toSignUp(view: View) {
-        val intent = Intent(this, SignUpActivity::class.java)
-        startActivity(intent)
-    }
-
-    fun toSignIn(view: View) {
-        val intent = Intent(this, SignInActivity::class.java)
-        startActivity(intent)
-    }
 }

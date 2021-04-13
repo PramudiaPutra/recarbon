@@ -11,4 +11,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
+    <string name="home">Home</string>
+    <string name="kalkulator">Kalkulator</string>
+    <string name="artikel">Artikel</string>
+    <string name="settings">Settings</string>
 </resources>

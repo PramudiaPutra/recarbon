@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/ic_home"
+        android:icon="@drawable/ic_home_menu_icon"
+        android:enabled="true"
+        android:title="@string/home"/>
+
+    <item android:id="@+id/ic_kalkulator"
+        android:icon="@drawable/ic_calculate_menu_icon"
+        android:enabled="true"
+        android:title="@string/kalkulator"/>
+
+    <item android:id="@+id/ic_artikel"
+        android:icon="@drawable/ic_article_menu_icon"
+        android:enabled="true"
+        android:title="@string/artikel"/>
+
+    <item android:id="@+id/ic_settings"
+        android:icon="@drawable/ic_settings_menu_icon"
+        android:enabled="true"
+        android:title="@string/settings"/>
+</menu>
