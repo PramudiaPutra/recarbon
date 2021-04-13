@@ -1,16 +1,44 @@
 package org.d3if0008.recarbon
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.fragment.app.Fragment
+import org.d3if0008.recarbon.databinding.ActivityMainBinding
+import org.d3if0008.recarbon.fragment.ArticleFragment
+import org.d3if0008.recarbon.fragment.CalculateFragment
+import org.d3if0008.recarbon.fragment.HomeFragment
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        val home = HomeFragment()
+        val calculate = CalculateFragment()
+        val article = ArticleFragment()
+
+
+        binding.bottomNavigation.selectedItemId = R.id.ic_kalkulator
+        setFragment(calculate)
+
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.ic_home -> setFragment(home)
+                R.id.ic_kalkulator -> setFragment(calculate)
+                R.id.ic_artikel ->setFragment(article)
+            }
+            true
+        }
+
+    }
+
+    private fun setFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
+        replace(R.id.flFragment,fragment)
+        commit()
     }
 
 }

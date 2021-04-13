@@ -5,9 +5,12 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="green_recarbon">#229062</color>
+    <color name="green_recarbon_variant">#085F2F</color>
     <color name="text_logo_recarbon">#E9F6F4</color>
     <color name="font_color_bold">#29332F</color>
     <color name="grey_thin_recarbon">#898989</color>
