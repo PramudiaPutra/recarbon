@@ -33,79 +33,78 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="94dp"
-        android:padding="32dp"
         android:background="@drawable/signin_layout_bg"
+        android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_circular">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/sign_in"
             android:textColor="@color/font_color_bold"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_username"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/username_email"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/edt_username_signup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:labelFor="@id/edt_username_signup"
             android:id="@+id/edt_username_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:importantForAutofill="no"
             android:inputType="text"
+            android:labelFor="@id/edt_username_signup"
+            app:layout_constraintBottom_toTopOf="@+id/tv_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_username"
-            android:importantForAutofill="no" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/password"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/edt_password_signup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edt_username_signup" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:labelFor="@id/edt_password_signup"
             android:id="@+id/edt_password_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:importantForAutofill="no"
             android:inputType="textPassword"
+            android:labelFor="@id/edt_password_signup"
+            app:layout_constraintBottom_toTopOf="@+id/btn_SignUp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_password"
-            android:importantForAutofill="no" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btn_SignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/custom_button"
             android:fontFamily="@font/poppins_medium"
             android:padding="8dp"
@@ -113,21 +112,21 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_SignUp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edt_password_signup" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tv_SignIn"
+            android:id="@+id/tv_SignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/sign_up"
             android:textColor="@color/font_color_bold"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_SignUp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/btn_SignUp" />
 
         <TextView
             android:id="@+id/tv_ForgotPassword"
@@ -136,9 +135,8 @@
             android:text="@string/forgot_password"
             android:textColor="@color/grey_thin_recarbon"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_SignIn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_SignIn" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_SignUp"
+            app:layout_constraintTop_toTopOf="@+id/tv_SignUp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
