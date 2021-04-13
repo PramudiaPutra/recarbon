@@ -7,6 +7,7 @@ import org.d3if0008.recarbon.databinding.ActivityMainBinding
 import org.d3if0008.recarbon.fragment.ArticleFragment
 import org.d3if0008.recarbon.fragment.CalculateFragment
 import org.d3if0008.recarbon.fragment.HomeFragment
+import org.d3if0008.recarbon.fragment.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val home = HomeFragment()
         val calculate = CalculateFragment()
         val article = ArticleFragment()
+        val setting = SettingsFragment()
 
 
         binding.bottomNavigation.selectedItemId = R.id.ic_kalkulator
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.ic_home -> setFragment(home)
                 R.id.ic_kalkulator -> setFragment(calculate)
                 R.id.ic_artikel ->setFragment(article)
+                R.id.ic_settings -> setFragment(setting)
             }
             true
         }
