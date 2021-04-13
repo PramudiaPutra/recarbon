@@ -1,10 +1,11 @@
-package org.d3if0008.recarbon
+package org.d3if0008.recarbon.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import org.d3if0008.recarbon.R
 
 class SettingsFragment : Fragment() {
     // TODO: Rename and change types of parameters
