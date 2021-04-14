@@ -31,4 +31,8 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="hello_username">Hello, Akhdan Pangestuaji</string>
+    <string name="pengaturan_akun">Pengaturan Akun</string>
+    <string name="faqs">FAQs</string>
+    <string name="log_out">Log Out</string>
 </resources>

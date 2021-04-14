@@ -14,4 +14,8 @@
     <color name="text_logo_recarbon">#E9F6F4</color>
     <color name="font_color_bold">#29332F</color>
     <color name="grey_thin_recarbon">#898989</color>
+
+    <color name="akun_color">#F4C564</color>
+    <color name="faqs_color">#6F8291</color>
+    <color name="logout_color">#D44A4A</color>
 </resources>
