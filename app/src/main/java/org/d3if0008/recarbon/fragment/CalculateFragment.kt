@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.d3if0008.recarbon.databinding.FragmentCalculateBinding
 
@@ -24,6 +26,10 @@ class CalculateFragment : Fragment() {
             peekHeight = 300
             this.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+        with(binding.rvDateHistory){
+
+        }
+
         return binding.root
     }
 }
