@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.ReCarbon" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_recarbon</item>
-        <item name="colorPrimaryVariant">@color/green_recarbon_variant</item>
+        <item name="colorPrimary">@color/green_recarbon_variant</item>
+        <item name="colorPrimaryVariant">@color/green_recarbon</item>
         <item name="colorOnPrimary">@color/font_color_bold</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

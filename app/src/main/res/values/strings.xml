@@ -7,16 +7,16 @@
     <string name="username_email">Username/ Email</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password ?</string>
-
     <string name="sign_up">Sign Up</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
+
+    <!--Navigation Menu-->
     <string name="home">Home</string>
     <string name="kalkulator">Kalkulator</string>
     <string name="artikel">Artikel</string>
     <string name="settings">Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
