@@ -6,10 +6,10 @@
     <dimen name="text_small">16sp</dimen>
     <dimen name="text_smaller">12sp</dimen>
 
-    <dimen name="margin_start">24dp</dimen>
-    <dimen name="margin_top_big">32dp</dimen>
-    <dimen name="margin_top_medium">16dp</dimen>
-    <dimen name="margin_top_small">4dp</dimen>
+    <dimen name="margin_horizontal">24dp</dimen>
+    <dimen name="margin_vertical_big">32dp</dimen>
+    <dimen name="margin_vertical_medium">16dp</dimen>
+    <dimen name="margin_vertical_small">4dp</dimen>
 
 
 </resources>
