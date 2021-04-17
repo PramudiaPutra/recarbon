@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/content_article"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_vertical_small"
             android:layout_marginBottom="@dimen/margin_vertical_small"
@@ -38,8 +38,8 @@
             android:includeFontPadding="false"
             android:textColor="@color/white"
             android:textSize="@dimen/text_smaller"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/title_article"
+            app:layout_constraintStart_toStartOf="@id/title_article"
             app:layout_constraintTop_toBottomOf="@id/title_article"
             tools:text="Konsentrasi karbon di bumi sudah sanagat
 mempengaruhi perubahan iklim. Hal ini
