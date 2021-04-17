@@ -1,7 +1,7 @@
-package org.d3if0008.recarbon.dummy
+package com.dextor.recarbon.dummy
 
-import org.d3if0008.recarbon.R
-import org.d3if0008.recarbon.data.ArticleData
+import com.dextor.recarbon.R
+import com.dextor.recarbon.data.ArticleData
 
 class ArticleDummy {
 

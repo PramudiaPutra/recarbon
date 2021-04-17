@@ -3,7 +3,6 @@ package com.dextor.recarbon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.dextor.recarbon.R
 import com.dextor.recarbon.databinding.ActivityMainBinding
 import com.dextor.recarbon.fragment.ArticleFragment
 import com.dextor.recarbon.fragment.CalculateFragment

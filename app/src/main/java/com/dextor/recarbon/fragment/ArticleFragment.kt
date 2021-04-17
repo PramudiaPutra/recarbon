@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon.fragment
+package com.dextor.recarbon.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.d3if0008.recarbon.ArticleActivity
-import org.d3if0008.recarbon.adapter.ArticleAdapter
-import org.d3if0008.recarbon.databinding.FragmentArticleBinding
-import org.d3if0008.recarbon.dummy.ArticleDummy
+import com.dextor.recarbon.ArticleActivity
+import com.dextor.recarbon.adapter.ArticleAdapter
+import com.dextor.recarbon.databinding.FragmentArticleBinding
+import com.dextor.recarbon.dummy.ArticleDummy
 
 class ArticleFragment : Fragment() {
 

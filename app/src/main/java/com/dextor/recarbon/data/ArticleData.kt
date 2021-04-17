@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon.data
+package com.dextor.recarbon.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

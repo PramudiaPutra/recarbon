@@ -1,11 +1,11 @@
-package org.d3if0008.recarbon.adapter
+package com.dextor.recarbon.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.d3if0008.recarbon.data.ArticleData
-import org.d3if0008.recarbon.databinding.RecyclerArticleBinding
+import com.dextor.recarbon.data.ArticleData
+import com.dextor.recarbon.databinding.RecyclerArticleBinding
 
 class ArticleAdapter(
     private val context: Context,

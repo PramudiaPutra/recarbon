@@ -1,10 +1,10 @@
-package org.d3if0008.recarbon
+package com.dextor.recarbon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.d3if0008.recarbon.data.ArticleData
-import org.d3if0008.recarbon.databinding.ActivityArticleBinding
-import org.d3if0008.recarbon.fragment.ArticleFragment
+import com.dextor.recarbon.data.ArticleData
+import com.dextor.recarbon.databinding.ActivityArticleBinding
+import com.dextor.recarbon.fragment.ArticleFragment
 
 class ArticleActivity : AppCompatActivity() {
 
