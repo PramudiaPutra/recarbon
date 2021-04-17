@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_recarbon"
+    tools:context=".AccountSettingActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_circular_account"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="93dp"
+        android:src="@drawable/akun_white_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/signin_layout_bg"
+        android:paddingTop="95dp"
+        android:paddingEnd="32dp"
+        android:paddingStart="32dp"
+        android:paddingBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_circular_account">
+
+        <TextView
+            android:id="@+id/tv_namaAnda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/font_color_bold"
+            android:text="@string/nama_anda"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_username_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/akhdan_pangestuaji"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_namaAnda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_namaAnda" />
+
+        <View
+            android:id="@+id/line_username"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_namaAnda" />
+
+        <TextView
+            android:id="@+id/tv_emailAnda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/email_anda"
+            android:textColor="@color/font_color_bold"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_username" />
+
+        <TextView
+            android:id="@+id/tv_email_akun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/recarbon_gmail_com"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_emailAnda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_emailAnda" />
+
+        <View
+            android:id="@+id/line_email"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_emailAnda" />
+
+        <TextView
+            android:id="@+id/tv_passwordAnda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/ganti_password"
+            android:textColor="@color/font_color_bold"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_email" />
+
+        <ImageView
+            android:id="@+id/img_change_password"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:rotation="180"
+            android:src="@drawable/back_black_icon"
+            app:layout_constraintBottom_toBottomOf="@id/tv_passwordAnda"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_passwordAnda" />
+
+        <View
+            android:id="@+id/line_password"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_passwordAnda" />
+
+        <Button
+            android:id="@+id/btn_backFromAkun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="8dp"
+            android:text="@string/kembali"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_password" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,4 +37,10 @@
     <string name="log_out">Log Out</string>
     <string name="hari_ini">Hari Ini</string>
     <string name="kemarin">Kemaren</string>
+    <string name="nama_anda">Nama Anda</string>
+    <string name="kembali">Kembali</string>
+    <string name="ganti_password">Ganti Password</string>
+    <string name="recarbon_gmail_com">recarbon@gmail.com</string>
+    <string name="email_anda">Email Anda</string>
+    <string name="akhdan_pangestuaji">Akhdan Pangestuaji</string>
 </resources>
