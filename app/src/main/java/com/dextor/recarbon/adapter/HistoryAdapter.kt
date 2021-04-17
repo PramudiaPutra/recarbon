@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon.adapter
+package com.dextor.recarbon.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import org.d3if0008.recarbon.R
-import org.d3if0008.recarbon.data.HistoryData
-import org.d3if0008.recarbon.databinding.RecyclerHistoryItemBinding
+import com.dextor.recarbon.R
+import com.dextor.recarbon.data.HistoryData
+import com.dextor.recarbon.databinding.RecyclerHistoryItemBinding
 import java.lang.Exception
 import java.text.ParseException
 import java.text.SimpleDateFormat

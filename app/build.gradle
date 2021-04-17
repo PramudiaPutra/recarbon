@@ -8,7 +8,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "org.d3if0008.recarbon"
+        applicationId "com.dextor.recarbon"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
