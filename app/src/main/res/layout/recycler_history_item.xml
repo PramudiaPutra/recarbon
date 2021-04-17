@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/dateItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_medium"
+        tools:text="Tanggal Berapa"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:cardBackgroundColor="@color/green_weak"
         app:cardCornerRadius="8dp"
+        app:contentPadding="13dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/dateItem">
 
         <ImageView
             android:id="@+id/icon_history"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/car_black_icon" />
     </androidx.cardview.widget.CardView>
 
@@ -25,7 +38,7 @@
         android:id="@+id/title_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
         android:fontFamily="@font/poppins_medium"
         android:includeFontPadding="false"
         android:textSize="@dimen/text_small"
@@ -76,6 +89,7 @@
         android:includeFontPadding="false"
         app:layout_constraintBottom_toBottomOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="Edit"
         tools:text="Edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

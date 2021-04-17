@@ -35,4 +35,6 @@
     <string name="pengaturan_akun">Pengaturan Akun</string>
     <string name="faqs">FAQs</string>
     <string name="log_out">Log Out</string>
+    <string name="hari_ini">Hari Ini</string>
+    <string name="kemarin">Kemaren</string>
 </resources>
