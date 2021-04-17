@@ -1,11 +1,12 @@
-package org.d3if0008.recarbon
+package com.dextor.recarbon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dextor.recarbon.R
 
-class SignInActivity : AppCompatActivity() {
+class AccountSettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_account_setting)
     }
 }

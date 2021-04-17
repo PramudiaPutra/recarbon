@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon.fragment
+package com.dextor.recarbon.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import org.d3if0008.recarbon.R
-import org.d3if0008.recarbon.adapter.HistoryAdapter
-import org.d3if0008.recarbon.data.HistoryData
-import org.d3if0008.recarbon.databinding.FragmentCalculateBinding
+import com.dextor.recarbon.R
+import com.dextor.recarbon.adapter.HistoryAdapter
+import com.dextor.recarbon.data.HistoryData
+import com.dextor.recarbon.databinding.FragmentCalculateBinding
 
 
 class CalculateFragment : Fragment() {

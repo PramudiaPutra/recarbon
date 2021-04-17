@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon.data
+package com.dextor.recarbon.data
 
 data class HistoryData(
     var date: String,

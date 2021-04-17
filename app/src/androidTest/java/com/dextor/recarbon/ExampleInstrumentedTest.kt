@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon
+package com.dextor.recarbon
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

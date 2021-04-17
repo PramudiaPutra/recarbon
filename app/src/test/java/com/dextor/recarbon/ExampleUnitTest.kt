@@ -1,4 +1,4 @@
-package org.d3if0008.recarbon
+package com.dextor.recarbon
 
 import org.junit.Test
 

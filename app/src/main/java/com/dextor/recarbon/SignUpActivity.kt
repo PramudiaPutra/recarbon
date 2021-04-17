@@ -1,7 +1,8 @@
-package org.d3if0008.recarbon
+package com.dextor.recarbon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dextor.recarbon.R
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

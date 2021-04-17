@@ -1,13 +1,14 @@
-package org.d3if0008.recarbon
+package com.dextor.recarbon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import org.d3if0008.recarbon.databinding.ActivityMainBinding
-import org.d3if0008.recarbon.fragment.ArticleFragment
-import org.d3if0008.recarbon.fragment.CalculateFragment
-import org.d3if0008.recarbon.fragment.HomeFragment
-import org.d3if0008.recarbon.fragment.SettingsFragment
+import com.dextor.recarbon.R
+import com.dextor.recarbon.databinding.ActivityMainBinding
+import com.dextor.recarbon.fragment.ArticleFragment
+import com.dextor.recarbon.fragment.CalculateFragment
+import com.dextor.recarbon.fragment.HomeFragment
+import com.dextor.recarbon.fragment.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
