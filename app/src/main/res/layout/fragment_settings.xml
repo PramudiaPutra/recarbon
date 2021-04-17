@@ -39,155 +39,163 @@
         app:layout_constraintTop_toBottomOf="@id/username_login">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/con_akun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_akun"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/con_akun"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/akun_color"
-                app:cardCornerRadius="7dp"
-                app:contentPadding="13dp"
-                app:layout_constraintEnd_toStartOf="@id/tv_akun"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_akun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/akun_color"
+                    app:cardCornerRadius="7dp"
+                    app:contentPadding="13dp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_akun"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/akun_white_icon" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_akun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/pengaturan_akun"
+                    android:textColor="@color/font_color_bold"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_akun"
+                    app:layout_constraintStart_toEndOf="@id/cv_akun"
+                    app:layout_constraintTop_toTopOf="@id/cv_akun" />
+
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/akun_white_icon" />
-            </androidx.cardview.widget.CardView>
+                    android:id="@+id/img_next_akun"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:rotation="180"
+                    android:src="@drawable/back_black_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_akun"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_akun" />
 
-            <TextView
-                android:id="@+id/tv_akun"
-                android:layout_width="wrap_content"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/con_faqs"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/pengaturan_akun"
-                android:textColor="@color/font_color_bold"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/cv_akun"
-                app:layout_constraintStart_toEndOf="@id/cv_akun"
-                app:layout_constraintTop_toTopOf="@id/cv_akun" />
-
-            <ImageView
-                android:id="@+id/img_next_akun"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:rotation="180"
-                android:src="@drawable/back_black_icon"
-                app:layout_constraintBottom_toBottomOf="@id/tv_akun"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_akun" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/con_faqs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/con_akun">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_faqs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/faqs_color"
-                app:cardCornerRadius="7dp"
-                app:contentPadding="13dp"
-                app:layout_constraintEnd_toStartOf="@id/tv_faqs"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/con_akun">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_faqs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/faqs_color"
+                    app:cardCornerRadius="7dp"
+                    app:contentPadding="13dp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_faqs"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/faqs_white_icon" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_faqs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/faqs"
+                    android:textColor="@color/font_color_bold"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_faqs"
+                    app:layout_constraintStart_toEndOf="@id/cv_faqs"
+                    app:layout_constraintTop_toTopOf="@id/cv_faqs" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/faqs_white_icon" />
-            </androidx.cardview.widget.CardView>
+                    android:id="@+id/img_next_faqs"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:rotation="180"
+                    android:src="@drawable/back_black_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_faqs"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_faqs" />
 
-            <TextView
-                android:id="@+id/tv_faqs"
-                android:layout_width="wrap_content"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/con_logout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/faqs"
-                android:textColor="@color/font_color_bold"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/cv_faqs"
-                app:layout_constraintStart_toEndOf="@id/cv_faqs"
-                app:layout_constraintTop_toTopOf="@id/cv_faqs" />
-
-            <ImageView
-                android:id="@+id/img_next_faqs"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:rotation="180"
-                android:src="@drawable/back_black_icon"
-                app:layout_constraintBottom_toBottomOf="@id/tv_faqs"
+                android:layout_marginTop="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_faqs" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/con_logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/con_faqs">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/logout_color"
-                app:cardCornerRadius="7dp"
-                app:contentPadding="13dp"
-                app:layout_constraintEnd_toStartOf="@id/tv_logout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/con_faqs">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/logout_color"
+                    app:cardCornerRadius="7dp"
+                    app:contentPadding="13dp"
+                    app:layout_constraintEnd_toStartOf="@id/tv_logout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/exit_white_icon" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tv_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/log_out"
+                    android:textColor="@color/font_color_bold"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/cv_logout"
+                    app:layout_constraintStart_toEndOf="@id/cv_logout"
+                    app:layout_constraintTop_toTopOf="@id/cv_logout" />
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/exit_white_icon" />
-            </androidx.cardview.widget.CardView>
+                    android:id="@+id/img_next_logout"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:rotation="180"
+                    android:src="@drawable/back_black_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_logout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_logout" />
 
-            <TextView
-                android:id="@+id/tv_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/log_out"
-                android:textColor="@color/font_color_bold"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/cv_logout"
-                app:layout_constraintStart_toEndOf="@id/cv_logout"
-                app:layout_constraintTop_toTopOf="@id/cv_logout" />
-
-            <ImageView
-                android:id="@+id/img_next_logout"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:rotation="180"
-                android:src="@drawable/back_black_icon"
-                app:layout_constraintBottom_toBottomOf="@id/tv_logout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_logout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -199,13 +207,13 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/article_content_image"
+        app:civ_border_color="#137A58"
+        app:civ_border_overlay="true"
+        app:civ_border_width="4dp"
         app:layout_constraintBottom_toTopOf="@id/bg_rounded"
         app:layout_constraintEnd_toEndOf="@id/bg_rounded"
         app:layout_constraintStart_toStartOf="@id/bg_rounded"
-        app:layout_constraintTop_toTopOf="@id/bg_rounded"
-        app:civ_border_width="4dp"
-        app:civ_border_color="#137A58"
-        app:civ_border_overlay="true"/>
+        app:layout_constraintTop_toTopOf="@id/bg_rounded" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
