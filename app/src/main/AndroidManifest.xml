@@ -9,20 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReCarbon">
-
+        <activity android:name=".ArticleActivity"/>
         <activity
             android:name=".SignUpActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        </activity>
-
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
             android:name=".SignInActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-
-        <activity android:name=".MainActivity"/>
-
-        <activity
-            android:name=".SplashScreenActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
