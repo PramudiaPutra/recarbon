@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/green_recarbon_variant"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_horizontal"
+        android:layout_marginTop="@dimen/margin_vertical_small"
+        android:layout_marginEnd="@dimen/margin_horizontal"
+        android:layout_marginBottom="@dimen/margin_vertical_small">
+
+        <TextView
+            android:id="@+id/title_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_small"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Apa itu jejak karbon (Carbon Footprint)?" />
+
+        <TextView
+            android:id="@+id/content_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_small"
+            android:layout_marginBottom="@dimen/margin_vertical_small"
+            android:fontFamily="@font/poppins_light"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_smaller"
+            app:layout_constraintEnd_toEndOf="@id/title_article"
+            app:layout_constraintStart_toStartOf="@id/title_article"
+            app:layout_constraintTop_toBottomOf="@id/title_article"
+            tools:text="Konsentrasi karbon di bumi sudah sanagat
+mempengaruhi perubahan iklim. Hal ini
+disebab karena emisi gas rumah kaca ya..." />
+
+        <TextView
+            android:id="@+id/age_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal"
+            android:layout_marginTop="@dimen/margin_vertical_medium"
+            android:fontFamily="@font/poppins_light"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_smaller"
+            app:layout_constraintStart_toStartOf="@id/content_article"
+            app:layout_constraintTop_toBottomOf="@id/content_article"
+            tools:text="3 menit lalu" />
+
+        <TextView
+            android:id="@+id/profile_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            tools:text="by Author Name"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/image_profile_article"
+            app:layout_constraintTop_toTopOf="@id/age_article"
+            android:textSize="@dimen/text_smaller"
+            />
+
+        <ImageView
+            android:id="@+id/image_profile_article"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/akun_white_icon"
+            android:layout_marginEnd="@dimen/margin_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/profile_article"
+            app:layout_constraintTop_toTopOf="@id/profile_article"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
