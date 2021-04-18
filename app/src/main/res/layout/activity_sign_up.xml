@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_recarbon"
-    tools:context="com.dextor.recarbon.SignInActivity">
+    tools:context="com.dextor.recarbon.SignUpActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_circular"
@@ -136,12 +136,12 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_SignUp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_SignIn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tv_SignUp"
+            android:id="@+id/tv_SignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -153,5 +153,15 @@
             app:layout_constraintStart_toStartOf="@+id/btn_SignUp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

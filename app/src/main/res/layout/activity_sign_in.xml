@@ -60,12 +60,12 @@
             android:fontFamily="@font/poppins_medium"
             android:text="@string/username_email"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/edt_username_signup"
+            app:layout_constraintBottom_toTopOf="@+id/edt_username_signin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/edt_username_signup"
+            android:id="@+id/edt_username_signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -84,24 +84,24 @@
             android:fontFamily="@font/poppins_medium"
             android:text="@string/password"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/edt_password_signup"
+            app:layout_constraintBottom_toTopOf="@+id/edt_password_signin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/edt_password_signup"
+            android:id="@+id/edt_password_signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:labelFor="@id/edt_password_signup"
-            app:layout_constraintBottom_toTopOf="@+id/btn_SignUp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_SignIn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/btn_SignUp"
+            android:id="@+id/btn_SignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -126,7 +126,7 @@
             android:textColor="@color/font_color_bold"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btn_SignUp" />
+            app:layout_constraintStart_toStartOf="@+id/btn_SignIn" />
 
         <TextView
             android:id="@+id/tv_ForgotPassword"
@@ -135,7 +135,7 @@
             android:text="@string/forgot_password"
             android:textColor="@color/grey_thin_recarbon"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/btn_SignUp"
+            app:layout_constraintEnd_toEndOf="@+id/btn_SignIn"
             app:layout_constraintTop_toTopOf="@+id/tv_SignUp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
