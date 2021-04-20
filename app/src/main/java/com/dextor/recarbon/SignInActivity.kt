@@ -51,8 +51,8 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         val username = binding.edtUsernameSignin.text.toString()
         val password = binding.edtPasswordSignin.text.toString()
 
-        checkInput(binding.edtUsernameSignin)
-        checkInput(binding.edtPasswordSignin)
+        resetError(binding.edtUsernameSignin)
+        resetError(binding.edtPasswordSignin)
 
         when {
             TextUtils.isEmpty(username) -> {
@@ -89,7 +89,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun checkInput(editText: TextInputEditText) {
+    private fun resetError(editText: TextInputEditText) {
         editText.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

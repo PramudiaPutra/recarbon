@@ -55,29 +55,29 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         val password = binding.edtPasswordSignup.text.toString()
         val email = binding.edtEmailSignup.text.toString()
 
-        checkInput(binding.edtUsernameSignup)
-        checkInput(binding.edtEmailSignup)
-        checkInput(binding.edtPasswordSignup)
+        resetError(binding.edtUsernameSignup)
+        resetError(binding.edtEmailSignup)
+        resetError(binding.edtPasswordSignup)
 
         if (TextUtils.isEmpty(username)) {
             binding.tvUsername.error = "username tidak boleh kosong"
         } else if (username.length < 6) {
             binding.tvUsername.error = "username kurang dari 6 karakter"
-
         }
 
         if (TextUtils.isEmpty(email)) {
             binding.tvEmail.error = "email tidak boleh kosong"
-
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tvEmail.error = "Gunakan Email yang Valid"
-            return
+//            return
         }
 
-        if (password.length !in 13 downTo 5) {
+        if (TextUtils.isEmpty(password)) {
+            binding.tvPassword.error = "password tidak boleh kosong"
+        } else if (password.length !in 13 downTo 5) {
             binding.tvPassword.error = "Jumlah karakter 6 sampai 12"
-            return
-            
+//            return
+
         } else {
             val user = User(username, email, password)
             binding.progressbar.visibility = View.VISIBLE
@@ -99,7 +99,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun checkInput(editText: TextInputEditText) {
+    private fun resetError(editText: TextInputEditText) {
         editText.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -117,6 +117,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
             }
+
             override fun afterTextChanged(s: Editable?) {}
         })
     }
