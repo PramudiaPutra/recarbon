@@ -12,7 +12,7 @@ class ArticleDummy {
             list.add(
                 ArticleData(
                     "Apa itu jejak karbon (Carbon Footprint) ?",
-                    "Konsentrasi karbon di bumi sudah sanagat mempengaruhi perubahan iklim. Hal ini disebab karena emisi gas rumah kaca ya...",
+                    "Konsentrasi karbon di bumi sudah sanagat mempengaruhi perubahan iklim. Hal ini disebab karena emisi gas rumah kaca yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
                     "3 Menit lalu ...",
                     "by Akhdan Pangestu Aji",
                     R.drawable.akun_white_icon

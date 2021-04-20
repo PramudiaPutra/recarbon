@@ -8,6 +8,7 @@ import com.dextor.recarbon.fragment.ArticleFragment
 
 class ArticleActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityArticleBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
