@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
     app:cardBackgroundColor="@color/green_recarbon_variant"
+    android:padding="8dp"
     app:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,13 +38,14 @@
             android:fontFamily="@font/poppins_light"
             android:includeFontPadding="false"
             android:textColor="@color/white"
+            android:maxLines="3"
+            android:ems="4"
+            android:ellipsize="end"
             android:textSize="@dimen/text_smaller"
             app:layout_constraintEnd_toEndOf="@id/title_article"
             app:layout_constraintStart_toStartOf="@id/title_article"
             app:layout_constraintTop_toBottomOf="@id/title_article"
-            tools:text="Konsentrasi karbon di bumi sudah sanagat
-mempengaruhi perubahan iklim. Hal ini
-disebab karena emisi gas rumah kaca ya..." />
+            tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
 
         <TextView
             android:id="@+id/age_article"
@@ -75,11 +77,12 @@ disebab karena emisi gas rumah kaca ya..." />
             android:id="@+id/image_profile_article"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/akun_white_icon"
             android:layout_marginEnd="@dimen/margin_horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/akun_white_icon"
             app:layout_constraintBottom_toBottomOf="@id/profile_article"
-            app:layout_constraintTop_toTopOf="@id/profile_article"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/profile_article" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
