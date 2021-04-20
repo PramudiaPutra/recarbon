@@ -1,167 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_recarbon"
-    tools:context="com.dextor.recarbon.SignUpActivity">
+    android:fillViewport="true">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_circular"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="93dp"
-        android:src="@drawable/circular_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/righteous_regular"
-        android:text="@string/logo_text_recarbon"
-        android:textColor="@color/text_logo_recarbon"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@id/img_circular"
-        app:layout_constraintEnd_toEndOf="@+id/img_circular"
-        app:layout_constraintStart_toStartOf="@+id/img_circular"
-        app:layout_constraintTop_toTopOf="@id/img_circular" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/signin_layout_bg"
-        android:padding="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent"
+        android:background="@color/green_recarbon"
+        tools:context="com.dextor.recarbon.SignUpActivity">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_circular"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="93dp"
+            android:src="@drawable/circular_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/sign_up"
-            android:textColor="@color/font_color_bold"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_username"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:fontFamily="@font/righteous_regular"
+            android:text="@string/logo_text_recarbon"
+            android:textColor="@color/text_logo_recarbon"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@id/img_circular"
+            app:layout_constraintEnd_toEndOf="@+id/img_circular"
+            app:layout_constraintStart_toStartOf="@+id/img_circular"
+            app:layout_constraintTop_toTopOf="@id/img_circular" />
 
-        <TextView
-            android:id="@+id/tv_username"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/username"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/edt_username_signup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/edt_username_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:labelFor="@id/edt_username_signup"
-            app:layout_constraintBottom_toTopOf="@+id/tv_email"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/email"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/edt_email_signup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/edt_email_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress"
-            android:labelFor="@id/edt_email_signup"
-            app:layout_constraintBottom_toTopOf="@+id/tv_password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/password"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/edt_password_signup"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/edt_password_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:importantForAutofill="no"
-            android:inputType="textPassword"
-            android:labelFor="@id/edt_password_signup"
-            app:layout_constraintBottom_toTopOf="@+id/btn_SignUp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/btn_SignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/custom_button"
-            android:fontFamily="@font/poppins_medium"
-            android:padding="8dp"
-            android:text="@string/sign_up"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_SignIn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_SignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/sign_in"
-            android:textColor="@color/font_color_bold"
-            android:textSize="18sp"
+            android:layout_height="0dp"
+            android:background="@drawable/signin_layout_bg"
+            android:padding="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btn_SignUp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/sign_up"
+                android:textColor="@color/font_color_bold"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_vertical_medium"
+                android:hint="@string/username"
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+                app:errorEnabled="true"
+                app:helperTextEnabled="true"
+                app:helperText="*Masukan username anda"
+                app:helperTextTextColor="@color/green_recarbon_variant"
+                app:layout_constraintBottom_toTopOf="@id/tv_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_username_signup"
+                    android:maxLength="20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_vertical_medium"
+                android:hint="@string/email"
+                app:errorEnabled="true"
+                app:helperText="*Masukkan email anda"
+                app:helperTextTextColor="@color/green_recarbon_variant"
+                app:layout_constraintBottom_toTopOf="@id/tv_password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tv_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_vertical_medium"
+                android:hint="@string/password"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:helperText="*Masukkan password anda"
+                app:helperTextTextColor="@color/green_recarbon_variant"
+                app:layout_constraintBottom_toTopOf="@id/btn_SignUp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_SignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/custom_button"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="8dp"
+                android:text="@string/sign_up"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_SignIn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_SignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_vertical_small"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/sign_in"
+                android:textColor="@color/font_color_bold"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btn_SignUp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ProgressBar
-        android:id="@+id/progressbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
