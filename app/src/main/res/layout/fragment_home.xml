@@ -1,17 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green_recarbon"
+    android:orientation="vertical"
     tools:context="com.dextor.recarbon.fragment.HomeFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HOME"
-        android:textSize="32sp"
-        android:textColor="@color/green_recarbon"
-        android:layout_gravity="center"/>
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_horizontal"
+            android:layout_marginTop="@dimen/margin_vertical_medium"
+            android:layout_marginBottom="@dimen/margin_vertical_medium"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Bagikan Ceritamu"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintBottom_toTopOf="@id/linear_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            tools:layout_editor_absoluteX="-49dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sosmed_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/recycler_sosmed"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_horizontal"
+            android:layout_marginBottom="@dimen/margin_horizontal"
+            android:backgroundTint="@color/green_recarbon"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

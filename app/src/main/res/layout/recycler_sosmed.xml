@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_horizontal"
+    android:layout_marginTop="@dimen/margin_vertical_medium"
+    android:layout_marginEnd="@dimen/margin_horizontal"
+    android:paddingBottom="@dimen/margin_vertical_medium">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_user_sosmed"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/date_sosmed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/CircleImage"
+        app:srcCompat="@drawable/story_placeholder_image" />
+
+    <TextView
+        android:id="@+id/username_sosmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_small"
+        app:layout_constraintStart_toEndOf="@id/img_user_sosmed"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="User Name" />
+
+    <TextView
+        android:id="@+id/location_sosmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/text_smaller"
+        app:layout_constraintStart_toStartOf="@id/username_sosmed"
+        app:layout_constraintTop_toBottomOf="@id/username_sosmed"
+        tools:text="Bandung, Telkkom" />
+
+    <TextView
+        android:id="@+id/date_sosmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/text_smaller"
+        app:layout_constraintStart_toStartOf="@id/location_sosmed"
+        app:layout_constraintTop_toBottomOf="@id/location_sosmed"
+        tools:text="Minggu, 20 Maret 2021" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_sosmed"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/margin_vertical_medium"
+        android:scaleType="centerCrop"
+        android:src="@drawable/story_placeholder_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_sosmed"
+        app:shapeAppearance="@style/CurveEdgeImage" />
+
+    <ImageView
+        android:id="@+id/like_sosmed"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/margin_vertical_medium"
+        android:src="@drawable/like_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_sosmed" />
+
+    <ImageView
+        android:id="@+id/comment_sosmed"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/comment_icon"
+        app:layout_constraintStart_toEndOf="@id/like_sosmed"
+        app:layout_constraintTop_toTopOf="@id/like_sosmed" />
+
+    <ImageView
+        android:id="@+id/share_sosmed"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/share_icon"
+        app:layout_constraintStart_toEndOf="@id/comment_sosmed"
+        app:layout_constraintTop_toTopOf="@id/comment_sosmed" />
+
+    <TextView
+        android:id="@+id/title_sosmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_vertical_medium"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/text_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/like_sosmed"
+        tools:text="Lorem Ipsum" />
+
+    <TextView
+        android:id="@+id/content_sosmed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="@dimen/text_small"
+        app:layout_constraintStart_toStartOf="@id/title_sosmed"
+        app:layout_constraintTop_toBottomOf="@id/title_sosmed"
+        tools:text="Konsentrasi karbon di bumi sudah sanagat mempengaruhi perubahan iklim. Hal ini disebab karena emisi gas rumah kaca ya..." />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
