@@ -2,13 +2,16 @@ package com.dextor.recarbon
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.dextor.recarbon.data.User
 import com.dextor.recarbon.databinding.ActivitySignUpBinding
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -31,7 +34,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         databaseReference = database?.reference!!.child("users")
 
         binding.btnSignUp.setOnClickListener(this)
-        binding.tvSignIn.setOnClickListener (this)
+        binding.tvSignIn.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -49,41 +52,73 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun registerUser() {
         val username = binding.edtUsernameSignup.text.toString()
-        if (username.length < 6) {
-            binding.edtUsernameSignup.error = "Jumlah karakter Minimal 6"
-            binding.edtUsernameSignup.requestFocus()
-        }
-
+        val password = binding.edtPasswordSignup.text.toString()
         val email = binding.edtEmailSignup.text.toString()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.edtEmailSignup.error = "Gunakan Email yang Valid"
-            binding.edtEmailSignup.requestFocus()
-            return
+        resetError(binding.edtUsernameSignup)
+        resetError(binding.edtEmailSignup)
+        resetError(binding.edtPasswordSignup)
+
+        if (TextUtils.isEmpty(username)) {
+            binding.tvUsername.error = "username tidak boleh kosong"
+        } else if (username.length < 6) {
+            binding.tvUsername.error = "username kurang dari 6 karakter"
         }
 
-        val password = binding.edtPasswordSignup.text.toString()
-        if (password.length !in 13 downTo 5) {
-            binding.edtPasswordSignup.error = "Jumlah karakter 6 samopai 12"
-            binding.edtPasswordSignup.requestFocus()
-            return
+        if (TextUtils.isEmpty(email)) {
+            binding.tvEmail.error = "email tidak boleh kosong"
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.tvEmail.error = "Gunakan Email yang Valid"
+//            return
         }
 
-        val user = User(username, email, password)
-        binding.progressbar.visibility = View.VISIBLE
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful) {
-                val currentUser = auth.currentUser
-                databaseReference?.child(currentUser?.uid!!)?.setValue(user)
-                Toast.makeText(this@SignUpActivity, "Register Berhasil", Toast.LENGTH_LONG).show()
-                binding.progressbar.visibility = View.GONE
-                finish()
+        if (TextUtils.isEmpty(password)) {
+            binding.tvPassword.error = "password tidak boleh kosong"
+        } else if (password.length !in 13 downTo 5) {
+            binding.tvPassword.error = "Jumlah karakter 6 sampai 12"
+//            return
 
-            } else {
-                Toast.makeText(this@SignUpActivity, "Register Akun Gagal", Toast.LENGTH_LONG).show()
-                binding.progressbar.visibility = View.GONE
+        } else {
+            val user = User(username, email, password)
+            binding.progressbar.visibility = View.VISIBLE
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val currentUser = auth.currentUser
+                    databaseReference?.child(currentUser?.uid!!)?.setValue(user)
+                    Toast.makeText(this@SignUpActivity, "Register Berhasil", Toast.LENGTH_LONG)
+                        .show()
+                    binding.progressbar.visibility = View.GONE
+                    finish()
+
+                } else {
+                    Toast.makeText(this@SignUpActivity, "Register Akun Gagal", Toast.LENGTH_LONG)
+                        .show()
+                    binding.progressbar.visibility = View.GONE
+                }
             }
         }
+    }
 
+    private fun resetError(editText: TextInputEditText) {
+        editText.addTextChangedListener(object : TextWatcher {
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                when (editText) {
+                    binding.edtUsernameSignup -> {
+                        binding.tvUsername.error = null
+                    }
+                    binding.edtEmailSignup -> {
+                        binding.tvEmail.error = null
+                    }
+                    binding.edtPasswordSignup -> {
+                        binding.tvPassword.error = null
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
 }
