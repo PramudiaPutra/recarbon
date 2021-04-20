@@ -27,6 +27,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:rotationY="180"
+            android:src="@drawable/article_content_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <LinearLayout
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
@@ -41,9 +49,9 @@
                 android:id="@+id/rv_sosmed_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/recycler_sosmed"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/recycler_sosmed" />
 
         </LinearLayout>
 
