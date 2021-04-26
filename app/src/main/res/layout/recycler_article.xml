@@ -70,8 +70,7 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@id/image_profile_article"
             app:layout_constraintTop_toTopOf="@id/age_article"
-            android:textSize="@dimen/text_smaller"
-            />
+            android:textSize="@dimen/text_smaller" />
 
         <ImageView
             android:id="@+id/image_profile_article"
@@ -82,7 +81,8 @@
             android:src="@drawable/akun_white_icon"
             app:layout_constraintBottom_toBottomOf="@id/profile_article"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/profile_article" />
+            app:layout_constraintTop_toTopOf="@id/profile_article"
+            android:contentDescription="@string/image_profile" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -88,6 +88,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this@SignUpActivity, "Register Berhasil", Toast.LENGTH_LONG)
                         .show()
                     binding.progressbar.visibility = View.GONE
+                    val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                    startActivity(intent)
                     finish()
 
                 } else {

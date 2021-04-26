@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         val setting = SettingsFragment()
 
 
-        binding.bottomNavigation.selectedItemId = R.id.ic_kalkulator
-        setFragment(calculate)
+        binding.bottomNavigation.selectedItemId = R.id.ic_home
+        setFragment(home)
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
