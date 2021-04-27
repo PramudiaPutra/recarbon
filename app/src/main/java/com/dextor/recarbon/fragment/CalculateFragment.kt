@@ -39,13 +39,20 @@ class CalculateFragment : Fragment() {
             this.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         }
 
+        if (list.isEmpty()){
+            binding.jumlahKarbon.text = "0"
+        }else{
+            val jumlah = list.sumByDouble { it.carbon.toDouble() }
+            binding.jumlahKarbon.text = "$jumlah"
+        }
+
+
         for (s in list){
             historyItem.add(s)
             with(binding.rvDateHistory){
                 adapter?.notifyDataSetChanged()
             }
 
-            Log.d("CalculateFragment", "$list.size")
         }
 
         with(binding.rvDateHistory) {
