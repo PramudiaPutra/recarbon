@@ -3,6 +3,7 @@
     package="com.dextor.recarbon">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <uses-feature
         android:name="android.hardware.camera.any"
         android:required="true" />
@@ -17,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReCarbon">
+        <activity android:name=".AddCalculateActivity"></activity>
         <activity android:name=".AddSosmedActivity" />
         <activity android:name=".ArticleActivity" />
         <activity android:name=".AccountSettingActivity" />

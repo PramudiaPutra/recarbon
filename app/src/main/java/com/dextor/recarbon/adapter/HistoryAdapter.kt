@@ -13,10 +13,12 @@ import java.lang.Exception
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
-class HistoryAdapter(private val data: List<HistoryData>)
+class HistoryAdapter(private val data: ArrayList<HistoryData>)
     : RecyclerView.Adapter<HistoryAdapter.ViewHolder>(){
 
+    private lateinit var binding: RecyclerHistoryItemBinding
     private var tgl = mutableListOf<String>()
     private var tanggal = mutableListOf<String>()
 

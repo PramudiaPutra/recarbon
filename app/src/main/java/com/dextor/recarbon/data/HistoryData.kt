@@ -1,5 +1,9 @@
 package com.dextor.recarbon.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class HistoryData(
     var date: String,
     var icon: Int,
@@ -7,4 +11,4 @@ data class HistoryData(
     var time: String,
     var description: String,
     var carbon: String
-)
+):Parcelable

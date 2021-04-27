@@ -44,4 +44,7 @@
     <string name="email_anda">Email Anda</string>
     <string name="akhdan_pangestuaji">Akhdan Pangestuaji</string>
     <string name="image_profile">image profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="simpan">Simpan</string>
 </resources>
