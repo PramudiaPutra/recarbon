@@ -1,19 +1,12 @@
 package com.dextor.recarbon.adapter
 
-import android.text.TextUtils.replace
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.dextor.recarbon.AddCalculateActivity
-import com.dextor.recarbon.R
 import com.dextor.recarbon.data.CategoryData
-import com.dextor.recarbon.databinding.ActivityAddCalculateBinding
 import com.dextor.recarbon.databinding.RecyclerCategoryItemBinding
-import com.dextor.recarbon.fragment.HomeFragment
-import com.dextor.recarbon.fragment.MobilDetailFragment
-import javax.security.auth.callback.Callback
 
 class CategoryAdapter(
     items1: AddCalculateActivity,
@@ -56,6 +49,7 @@ class CategoryAdapter(
         ) = with(binding) {
             imgKategori.setImageResource(categoryData.categoryImage)
             tvJudulKategori.text = categoryData.categoryTitle
+            cvKategori.setCardBackgroundColor(Color.parseColor(categoryData.color))
         }
 
     }

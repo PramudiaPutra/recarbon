@@ -7,4 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class CategoryData (
     var categoryImage: Int,
     var categoryTitle: String,
+    var color: String
 ):Parcelable

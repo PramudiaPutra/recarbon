@@ -10,35 +10,40 @@ class CategoryDummy {
             list.add(
                 CategoryData(
                     R.drawable.car_white_icon,
-                    "Mobil"
+                    "Mobil",
+                    "#D13F40"
                 )
             )
 
             list.add(
                 CategoryData(
                     R.drawable.motor_white_icon,
-                    "Motor"
+                    "Motor",
+                    "#1E3C54"
                 )
             )
 
             list.add(
                 CategoryData(
                     R.drawable.plastic_white_icon,
-                    "Plastik"
+                    "Plastik",
+                    "#013833"
                 )
             )
 
             list.add(
                 CategoryData(
                     R.drawable.flash_white_icon,
-                    "Listrik"
+                    "Listrik",
+                    "#F4C564"
                 )
             )
 
             list.add(
                 CategoryData(
                     R.drawable.walk_white_icon,
-                    "Jalan"
+                    "Jalan",
+                    "#FEB7CF"
                 )
             )
             return list

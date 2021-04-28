@@ -1,11 +1,9 @@
 package com.dextor.recarbon
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.dextor.recarbon.databinding.ActivityAccountSettingBinding
-import com.dextor.recarbon.databinding.FragmentSettingsBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
