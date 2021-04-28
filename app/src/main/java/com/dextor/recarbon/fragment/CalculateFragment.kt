@@ -46,7 +46,6 @@ class CalculateFragment : Fragment() {
             binding.jumlahKarbon.text = "$jumlah"
         }
 
-
         for (s in list){
             historyItem.add(s)
             with(binding.rvDateHistory){
