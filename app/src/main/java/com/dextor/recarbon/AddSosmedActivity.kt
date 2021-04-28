@@ -1,23 +1,23 @@
 package com.dextor.recarbon
 
 import android.app.Activity
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.ImageView
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
+import com.dextor.recarbon.adapter.SosmedAdapter
 import com.dextor.recarbon.data.SosmedData
 import com.dextor.recarbon.databinding.ActivityAddSosmedBinding
-import com.google.firebase.database.FirebaseDatabase
-import java.util.jar.Manifest
+import com.dextor.recarbon.fragment.HomeFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import java.util.*
 
 class AddSosmedActivity : AppCompatActivity() {
 
@@ -26,16 +26,32 @@ class AddSosmedActivity : AppCompatActivity() {
         private const val CAMERA_REQUEST_CODE = 2
     }
 
+    private lateinit var list: ArrayList<SosmedData>
+    private lateinit var sosmedAdapter: SosmedAdapter
     private lateinit var binding: ActivityAddSosmedBinding
+
     private lateinit var imgPosting: Bitmap
+    lateinit var auth: FirebaseAuth
+    private var databaseReference: DatabaseReference? = null
+    private var database: FirebaseDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddSosmedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        list = ArrayList()
+        sosmedAdapter = SosmedAdapter(list)
+        val homeFragment = HomeFragment()
+
+        auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        databaseReference = database?.reference!!.child("users")
+
         binding.btnKirimPosting.setOnClickListener {
             saveData()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         binding.tvBack.setOnClickListener {
@@ -89,26 +105,31 @@ class AddSosmedActivity : AppCompatActivity() {
 
 
     private fun saveData(){
-//        val imgUser: Int,
-//        val username: String,
-//        val location: String,
-//        val date: String,
-//        val imgStory: Int,
-//        val title: String,
-//        val content: String
 
-        val imgUser = ContextCompat.getDrawable(this, R.drawable.article_content_image)
+        val user = auth.currentUser
+        val userreference = databaseReference?.child(user?.uid!!)
+        var name = ""
+
+        userreference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                name = snapshot.child("username").value.toString()
+                Log.d("SettingsFragment", "Username Awal: $name")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        val imgUser = R.drawable.postingan_content_image
         val username = "Yusuf Basqara"
         val location = binding.edtLokasiPoting.text.toString()
-        val date = "21-04-2021"
+        val date = Calendar.DATE
         val imgStory = imgPosting
         val title = binding.edtJudulPoting.text.toString()
         val content = binding.edtDeskripsiPoting.text.toString()
 
-//        val reff = FirebaseDatabase.getInstance().getReference("postingan")
-//        val postinganId = reff.push().key
-//        val postingan = SosmedData(imgUser, username, location, date, imgStory, title, content)
-
+        HomeFragment.list.add(SosmedData(imgUser,username,location,date.toString(),imgStory, title,content))
+        sosmedAdapter.notifyDataSetChanged()
 
     }
 }

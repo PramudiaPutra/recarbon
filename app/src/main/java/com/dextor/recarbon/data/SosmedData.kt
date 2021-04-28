@@ -1,8 +1,8 @@
 package com.dextor.recarbon.data
 
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Parcelable
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -11,7 +11,7 @@ data class SosmedData(
     val username: String,
     val location: String,
     val date: String,
-    val imgStory: Int,
+    val imgStory: Bitmap,
     val title: String,
     val content: String
 ) : Parcelable

@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@id/location_sosmed"
         tools:text="Minggu, 20 Maret 2021" />
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_sosmed"
         android:layout_width="match_parent"
         android:layout_height="200dp"

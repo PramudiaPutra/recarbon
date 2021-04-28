@@ -1,6 +1,5 @@
 package com.dextor.recarbon.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,8 +7,7 @@ import com.dextor.recarbon.data.SosmedData
 import com.dextor.recarbon.databinding.RecyclerSosmedBinding
 
 class SosmedAdapter(
-    private val context: Context,
-    private val items: List<SosmedData>
+    private val items: ArrayList<SosmedData>
 ) : RecyclerView.Adapter<SosmedAdapter.SosmedViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -22,23 +20,25 @@ class SosmedAdapter(
     }
 
     override fun onBindViewHolder(holder: SosmedViewHolder, position: Int) {
-        holder.bind(items[position])
+        val dataV = items[position]
+        holder.bind(dataV,position)
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    class SosmedViewHolder(private val binding: RecyclerSosmedBinding) :
+    inner class SosmedViewHolder(private val binding: RecyclerSosmedBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            sosmedData: SosmedData
+            sosmedData: SosmedData,
+            position: Int
         ) = with(binding) {
             imgUserSosmed.setImageResource(sosmedData.imgUser)
-            usernameSosmed.text = sosmedData.username
+            usernameSosmed.text = sosmedData.username.toString()
             locationSosmed.text = sosmedData.location
             dateSosmed.text = sosmedData.date
-            imgSosmed.setImageResource(sosmedData.imgStory)
+            imgSosmed.setImageBitmap(sosmedData.imgStory)
             titleSosmed.text = sosmedData.title
             contentSosmed.text = sosmedData.content
         }

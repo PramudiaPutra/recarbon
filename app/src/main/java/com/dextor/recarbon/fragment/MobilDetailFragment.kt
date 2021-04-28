@@ -32,9 +32,11 @@ class MobilDetailFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentMobilDetailBinding.inflate(layoutInflater, container, false)
+
         list = ArrayList()
         historyAdapter = HistoryAdapter(list)
         val calculateFragment = CalculateFragment()
+
         binding.btnSimpanDetail.setOnClickListener {
             hitungKarbonMobil()
             val transaction = activity?.supportFragmentManager?.beginTransaction()
