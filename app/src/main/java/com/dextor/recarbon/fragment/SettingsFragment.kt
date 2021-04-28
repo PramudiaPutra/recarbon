@@ -24,8 +24,8 @@ class SettingsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
-        binding = FragmentSettingsBinding.inflate(layoutInflater,container,false)
+    ): View {
+        binding = FragmentSettingsBinding.inflate(layoutInflater, container, false)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
@@ -33,26 +33,26 @@ class SettingsFragment : Fragment() {
 
         loadProfile()
 
-        binding.conAkun.setOnClickListener{
+        binding.conAkun.setOnClickListener {
             val intent = Intent(context, AccountSettingActivity::class.java)
             startActivity(intent)
 
         }
-
 
         return binding.root
 
 
     }
 
-    private fun loadProfile(){
+    private fun loadProfile() {
+        
         val user = auth.currentUser
         val userreference = databaseReference?.child(user?.uid!!)
 
-        userreference?.addValueEventListener(object: ValueEventListener{
+        userreference?.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val name = snapshot.child("username").value.toString()
-                Log.d("SettingsFragment","Username: $name")
+                Log.d("SettingsFragment", "Username: $name")
                 binding.usernameLogin.text = snapshot.child("username").value.toString()
             }
 
