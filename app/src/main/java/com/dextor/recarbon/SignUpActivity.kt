@@ -13,6 +13,7 @@ import com.dextor.recarbon.data.User
 import com.dextor.recarbon.databinding.ActivitySignUpBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -61,9 +62,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
         if (TextUtils.isEmpty(username)) {
             binding.tvUsername.error = "username tidak boleh kosong"
-        } else if (username.length < 6) {
-            binding.tvUsername.error = "username kurang dari 6 karakter"
         }
+//        else if (username.length < 6) {
+//            binding.tvUsername.error = "username kurang dari 6 karakter"
+//        }
 
         if (TextUtils.isEmpty(email)) {
             binding.tvEmail.error = "email tidak boleh kosong"
@@ -79,23 +81,48 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 //            return
 
         } else {
-            val user = User(username, email, password)
+//            val user = User(username, email, password)
             binding.progressbar.visibility = View.VISIBLE
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val currentUser = auth.currentUser
-                    databaseReference?.child(currentUser?.uid!!)?.setValue(user)
-                    Toast.makeText(this@SignUpActivity, "Register Berhasil", Toast.LENGTH_LONG)
-                        .show()
-                    binding.progressbar.visibility = View.GONE
-                    val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
-                    startActivity(intent)
-                    finish()
 
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+//                if (it.isSuccessful) {
+//                    val currentUser = auth.currentUser
+//                    databaseReference?.child(currentUser?.uid!!)?.setValue(user)
+//                    Toast.makeText(this@SignUpActivity, "Register Berhasil", Toast.LENGTH_LONG)
+//                        .show()
+//                    binding.progressbar.visibility = View.GONE
+//                    val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+//                    startActivity(intent)
+//                    finish()
+//
+//                } else {
+//                    Toast.makeText(this@SignUpActivity, "Register Akun Gagal", Toast.LENGTH_LONG)
+//                        .show()
+//                    binding.progressbar.visibility = View.GONE
+//                }
+                if (task.isSuccessful) {
+                    val currentUser = auth.currentUser
+                    val addUsername =
+                        UserProfileChangeRequest.Builder().setDisplayName(username).build()
+                    currentUser?.updateProfile(addUsername)?.addOnCompleteListener {
+                        if (it.isSuccessful) {
+
+                            Toast.makeText(
+                                this@SignUpActivity,
+                                "Register Berhasil",
+                                Toast.LENGTH_LONG
+                            ).show()
+
+                            binding.progressbar.visibility = View.GONE
+                            val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                        }
+                    }
                 } else {
-                    Toast.makeText(this@SignUpActivity, "Register Akun Gagal", Toast.LENGTH_LONG)
-                        .show()
-                    binding.progressbar.visibility = View.GONE
+                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                 }
             }
         }

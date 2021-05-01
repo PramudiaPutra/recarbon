@@ -77,11 +77,8 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                             startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                             finish()
                         } else {
-                            Toast.makeText(
-                                this@SignInActivity,
-                                "Login Akun Gagal",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Toast.makeText(this, it.exception?.message, Toast.LENGTH_LONG).show()
+
                         }
                     }
             }
