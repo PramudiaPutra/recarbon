@@ -26,23 +26,6 @@ class ArticleAdapter(
     override fun getItemCount(): Int {
         return items.size
     }
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
-//    }
-//
-//    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        if (holder is ArticleViewHolder) {
-//            holder.bind(items[position], listener)
-//        }
-//    }
-//
-//    override fun getItemCount(): Int {
-//        return items.size
-//    }
-//
-//    fun addArticle(article: List<ArticleData>) {
-//        items = article
-//    }
 
     class ArticleViewHolder(private val binding: RecyclerArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {

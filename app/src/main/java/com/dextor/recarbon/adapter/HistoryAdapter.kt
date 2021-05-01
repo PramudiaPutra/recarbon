@@ -15,8 +15,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HistoryAdapter(private val data: ArrayList<HistoryData>)
-    : RecyclerView.Adapter<HistoryAdapter.ViewHolder>(){
+class HistoryAdapter(private val data: ArrayList<HistoryData>) :
+    RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     private var tgl = mutableListOf<String>()
     private var tanggal = mutableListOf<String>()
@@ -25,18 +25,18 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
         sortingDate()
     }
 
-    private fun sortingDate(){
-        for (index in data){
+    private fun sortingDate() {
+        for (index in data) {
             Log.d("HistoryAdapter", "Isi Data Tanggal" + index.date)
             formatDate(index.date).let {
                 tgl.add(it)
             }
         }
 
-        for (index in tgl){
-            if (tanggal.contains(index)){
+        for (index in tgl) {
+            if (tanggal.contains(index)) {
                 tanggal.add("")
-            }else{
+            } else {
                 tanggal.add(index)
             }
         }
@@ -44,7 +44,7 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataV = data[position]
-        holder.bind(dataV,position)
+        holder.bind(dataV, position)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -60,21 +60,21 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
     inner class ViewHolder(private val binding: RecyclerHistoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(historyData: HistoryData, position: Int) = with(binding){
-            if (tanggal[position].isEmpty()){
+        fun bind(historyData: HistoryData, position: Int) = with(binding) {
+            if (tanggal[position].isEmpty()) {
                 dateItem.isGone
-            }else{
+            } else {
                 dateItem.isVisible
 
                 setItemDate(tanggal[position]).let {
-                    when(it){
-                        in 0..24->{
+                    when (it) {
+                        in 0..24 -> {
                             dateItem.text = root.context.getString(R.string.hari_ini)
                         }
-                        in 25..48->{
+                        in 25..48 -> {
                             dateItem.text = root.context.getString(R.string.kemarin)
                         }
-                        else->{
+                        else -> {
                             dateItem.text = tanggal[position]
                         }
                     }
@@ -92,7 +92,10 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
 
     fun setItemDate(date: String?): Long {
         val tanggal = formatDate2(date)
-        val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Calendar.getInstance().time)
+        val currentDate = SimpleDateFormat(
+            "yyyy-MM-dd HH:mm:ss",
+            Locale.getDefault()
+        ).format(Calendar.getInstance().time)
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         Log.e("HistoryAdapter", "Ini tanggal : $tanggal")
         try {
@@ -110,7 +113,7 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
     }
 
 
-    private fun formatDate(inputDate: String?): String{
+    private fun formatDate(inputDate: String?): String {
         Log.e("Input Date", "Kie:$inputDate")
         val parsed: Date?
         val dateInput = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+07:00'", Locale.getDefault())
@@ -122,13 +125,13 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
             parsed?.let {
                 return dateOutput.format(it)
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("HistoryAdapter Format", e.toString())
         }
         return ""
     }
 
-    private fun formatDate2(inputDate: String?): String{
+    private fun formatDate2(inputDate: String?): String {
         Log.e("Input Date", "Kie:$inputDate")
         val parsed: Date?
         val dateInput = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
@@ -139,7 +142,7 @@ class HistoryAdapter(private val data: ArrayList<HistoryData>)
             parsed?.let {
                 return dateOutput.format(it)
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.e("HistoryAdapter Format", e.toString())
         }
         return ""

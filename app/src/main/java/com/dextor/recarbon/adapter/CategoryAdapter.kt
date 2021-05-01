@@ -57,9 +57,4 @@ class CategoryAdapter(
     interface OnItemClickCallback {
         fun onItemClicked(data: CategoryData)
     }
-
-//    private fun setFragment(fragment: Fragment) = supportFragmentManager.beginTransaction().apply {
-//        replace(R.id.rv_kategori,fragment)
-//        commit()
-//    }
 }

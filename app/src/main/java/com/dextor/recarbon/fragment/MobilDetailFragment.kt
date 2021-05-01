@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.dextor.recarbon.AddCalculateActivity
+import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
 import com.dextor.recarbon.adapter.HistoryAdapter
 import com.dextor.recarbon.data.HistoryData
@@ -39,10 +40,15 @@ class MobilDetailFragment : Fragment() {
 
         binding.btnSimpanDetail.setOnClickListener {
             hitungKarbonMobil()
-            val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.calculateActivity, calculateFragment)
-            transaction?.disallowAddToBackStack()
-            transaction?.commit()
+            activity?.let {
+                val intent = Intent(it, MainActivity::class.java)
+                it.startActivity(intent)
+            }
+
+//            val transaction = activity?.supportFragmentManager?.beginTransaction()
+//            transaction?.replace(R.id.calculateActivity, calculateFragment)
+//            transaction?.disallowAddToBackStack()
+//            transaction?.commit()
 
         }
         return binding.root

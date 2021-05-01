@@ -21,7 +21,7 @@ class SosmedAdapter(
 
     override fun onBindViewHolder(holder: SosmedViewHolder, position: Int) {
         val dataV = items[position]
-        holder.bind(dataV,position)
+        holder.bind(dataV, position)
     }
 
     override fun getItemCount(): Int {

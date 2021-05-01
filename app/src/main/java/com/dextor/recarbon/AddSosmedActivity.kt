@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dextor.recarbon.adapter.SosmedAdapter
@@ -17,6 +17,7 @@ import com.dextor.recarbon.databinding.ActivityAddSosmedBinding
 import com.dextor.recarbon.fragment.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AddSosmedActivity : AppCompatActivity() {
@@ -24,6 +25,11 @@ class AddSosmedActivity : AppCompatActivity() {
     companion object {
         private const val CAMERA_PERMISSION_CODE = 1
         private const val CAMERA_REQUEST_CODE = 2
+        private var email =""
+        private var userr: String = ""
+        interface MyCallback {
+            fun onCallback(value: String?)
+        }
     }
 
     private lateinit var list: ArrayList<SosmedData>
@@ -42,7 +48,6 @@ class AddSosmedActivity : AppCompatActivity() {
 
         list = ArrayList()
         sosmedAdapter = SosmedAdapter(list)
-        val homeFragment = HomeFragment()
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
@@ -86,7 +91,7 @@ class AddSosmedActivity : AppCompatActivity() {
             if (grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 startActivityForResult(intent, CAMERA_REQUEST_CODE)
-            }else{
+            } else {
                 Toast.makeText(this, "Izinkan Penggunaan Kamera Dahulu", Toast.LENGTH_SHORT).show()
             }
         }
@@ -94,8 +99,8 @@ class AddSosmedActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK){
-            if (requestCode == CAMERA_REQUEST_CODE){
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == CAMERA_REQUEST_CODE) {
                 val thumbnail: Bitmap = data!!.extras!!.get("data") as Bitmap
                 binding.ivImage.setImageBitmap(thumbnail)
                 imgPosting = thumbnail
@@ -104,31 +109,48 @@ class AddSosmedActivity : AppCompatActivity() {
     }
 
 
-    private fun saveData(){
+    private fun saveData() {
 
         val user = auth.currentUser
+        user?.let {
+            email = user.email
+            Log.d("Ini email",email!!)
+        }
         val userreference = databaseReference?.child(user?.uid!!)
-        var name = ""
 
-        userreference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                name = snapshot.child("username").value.toString()
-                Log.d("SettingsFragment", "Username Awal: $name")
-            }
+        fun readData(myCallback: MyCallback) {
+            userreference?.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    userr = snapshot.child("username").value.toString()
+                }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+        }
+
+        val username = userr
+        val sdf = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
+        val currentDate = sdf.format(Date())
         val imgUser = R.drawable.postingan_content_image
-        val username = "Yusuf Basqara"
         val location = binding.edtLokasiPoting.text.toString()
-        val date = Calendar.DATE
+        val date = currentDate
         val imgStory = imgPosting
         val title = binding.edtJudulPoting.text.toString()
         val content = binding.edtDeskripsiPoting.text.toString()
 
-        HomeFragment.list.add(SosmedData(imgUser,username,location,date.toString(),imgStory, title,content))
+        HomeFragment.list.add(
+            SosmedData(
+                imgUser,
+                email,
+                location,
+                date.toString(),
+                imgStory,
+                title,
+                content
+            )
+        )
         sosmedAdapter.notifyDataSetChanged()
 
     }
