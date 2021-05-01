@@ -108,26 +108,18 @@ class AddSosmedActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
 //        val userreference = databaseReference?.child(user?.uid!!)
-        var name = ""
-
 //        userreference?.addValueEventListener(object : ValueEventListener {
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //                name = snapshot.child("username").value.toString()
 //                Log.d("SettingsFragment", "Username Awal: $name")
 //            }
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-            })
-        }
+//                override fun onCancelled(error: DatabaseError) {
+//                }
+//            })
 
-        val username = userr
         val sdf = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
         val currentDate = sdf.format(Date())
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//        })
         val imgUser = R.drawable.postingan_content_image
         val username = currentUser?.displayName
         val location = binding.edtLokasiPoting.text.toString()
@@ -139,7 +131,7 @@ class AddSosmedActivity : AppCompatActivity() {
         HomeFragment.list.add(
             SosmedData(
                 imgUser,
-                email,
+                username,
                 location,
                 date.toString(),
                 imgStory,
