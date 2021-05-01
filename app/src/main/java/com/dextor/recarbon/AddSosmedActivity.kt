@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dextor.recarbon.adapter.SosmedAdapter
@@ -25,11 +25,6 @@ class AddSosmedActivity : AppCompatActivity() {
     companion object {
         private const val CAMERA_PERMISSION_CODE = 1
         private const val CAMERA_REQUEST_CODE = 2
-        private var email =""
-        private var userr: String = ""
-        interface MyCallback {
-            fun onCallback(value: String?)
-        }
     }
 
     private lateinit var list: ArrayList<SosmedData>
@@ -38,8 +33,8 @@ class AddSosmedActivity : AppCompatActivity() {
 
     private lateinit var imgPosting: Bitmap
     lateinit var auth: FirebaseAuth
-    private var databaseReference: DatabaseReference? = null
-    private var database: FirebaseDatabase? = null
+//    private var databaseReference: DatabaseReference? = null
+//    private var database: FirebaseDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +45,8 @@ class AddSosmedActivity : AppCompatActivity() {
         sosmedAdapter = SosmedAdapter(list)
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        databaseReference = database?.reference!!.child("users")
+//        database = FirebaseDatabase.getInstance()
+//        databaseReference = database?.reference!!.child("users")
 
         binding.btnKirimPosting.setOnClickListener {
             saveData()
@@ -111,18 +106,15 @@ class AddSosmedActivity : AppCompatActivity() {
 
     private fun saveData() {
 
-        val user = auth.currentUser
-        user?.let {
-            email = user.email
-            Log.d("Ini email",email!!)
-        }
-        val userreference = databaseReference?.child(user?.uid!!)
+        val currentUser = auth.currentUser
+//        val userreference = databaseReference?.child(user?.uid!!)
+        var name = ""
 
-        fun readData(myCallback: MyCallback) {
-            userreference?.addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    userr = snapshot.child("username").value.toString()
-                }
+//        userreference?.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                name = snapshot.child("username").value.toString()
+//                Log.d("SettingsFragment", "Username Awal: $name")
+//            }
 
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
@@ -133,7 +125,11 @@ class AddSosmedActivity : AppCompatActivity() {
         val username = userr
         val sdf = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
         val currentDate = sdf.format(Date())
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
         val imgUser = R.drawable.postingan_content_image
+        val username = currentUser?.displayName
         val location = binding.edtLokasiPoting.text.toString()
         val date = currentDate
         val imgStory = imgPosting
