@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-        sosmedItem = ArrayList<SosmedData>()
+        sosmedItem = ArrayList()
         for (s in list){
             sosmedItem.add(s)
             with(binding.rvSosmedList){

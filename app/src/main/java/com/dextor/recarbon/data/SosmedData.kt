@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class SosmedData(
     val imgUser: Int,
-    val username: String,
+    val username: String?,
     val location: String,
     val date: String,
     val imgStory: Bitmap,

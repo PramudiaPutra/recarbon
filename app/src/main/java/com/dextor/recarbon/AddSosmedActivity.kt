@@ -32,8 +32,8 @@ class AddSosmedActivity : AppCompatActivity() {
 
     private lateinit var imgPosting: Bitmap
     lateinit var auth: FirebaseAuth
-    private var databaseReference: DatabaseReference? = null
-    private var database: FirebaseDatabase? = null
+//    private var databaseReference: DatabaseReference? = null
+//    private var database: FirebaseDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,8 +45,8 @@ class AddSosmedActivity : AppCompatActivity() {
         val homeFragment = HomeFragment()
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        databaseReference = database?.reference!!.child("users")
+//        database = FirebaseDatabase.getInstance()
+//        databaseReference = database?.reference!!.child("users")
 
         binding.btnKirimPosting.setOnClickListener {
             saveData()
@@ -106,22 +106,21 @@ class AddSosmedActivity : AppCompatActivity() {
 
     private fun saveData(){
 
-        val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+        val currentUser = auth.currentUser
+//        val userreference = databaseReference?.child(user?.uid!!)
         var name = ""
 
-        userreference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                name = snapshot.child("username").value.toString()
-                Log.d("SettingsFragment", "Username Awal: $name")
-            }
+//        userreference?.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                name = snapshot.child("username").value.toString()
+//                Log.d("SettingsFragment", "Username Awal: $name")
+//            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
         val imgUser = R.drawable.postingan_content_image
-        val username = "Yusuf Basqara"
+        val username = currentUser?.displayName
         val location = binding.edtLokasiPoting.text.toString()
         val date = Calendar.DATE
         val imgStory = imgPosting
