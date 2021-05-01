@@ -28,8 +28,8 @@ class SettingsFragment : Fragment() {
         binding = FragmentSettingsBinding.inflate(layoutInflater, container, false)
 
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        databaseReference = database?.reference!!.child("users")
+//        database = FirebaseDatabase.getInstance()
+//        databaseReference = database?.reference!!.child("users")
 
         loadProfile()
 
@@ -46,21 +46,23 @@ class SettingsFragment : Fragment() {
 
     private fun loadProfile() {
         
-        val user = auth.currentUser
-        val userreference = databaseReference?.child(user?.uid!!)
+        val currentUser = auth.currentUser
+//        val userreference = databaseReference?.child(user?.uid!!)
 
-        userreference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val name = snapshot.child("username").value.toString()
-                Log.d("SettingsFragment", "Username: $name")
-                binding.usernameLogin.text = snapshot.child("username").value.toString()
-            }
+//        userreference?.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val name = snapshot.child("username").value.toString()
+//                Log.d("SettingsFragment", "Username: $name")
+//                binding.usernameLogin.text = snapshot.child("username").value.toString()
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//        })
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-
+        if (currentUser != null){
+            binding.usernameLogin.text = currentUser.displayName
+        }
         binding.conLogout.setOnClickListener {
             auth.signOut()
             startActivity(Intent(context, SignInActivity::class.java))
