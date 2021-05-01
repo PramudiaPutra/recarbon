@@ -41,7 +41,10 @@ class MobilDetailFragment : Fragment() {
         binding.btnSimpanDetail.setOnClickListener {
             hitungKarbonMobil()
             activity?.let {
-                val intent = Intent(it, MainActivity::class.java)
+                val intent = Intent(it, MainActivity::class.java).apply {
+                    flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
                 it.startActivity(intent)
             }
 

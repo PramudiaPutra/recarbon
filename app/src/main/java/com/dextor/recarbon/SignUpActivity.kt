@@ -45,7 +45,10 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.tv_SignIn -> {
-                val intent = Intent(this, SignInActivity::class.java)
+                val intent = Intent(this, SignInActivity::class.java).apply {
+                    flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
                 startActivity(intent)
             }
         }
@@ -118,7 +121,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                             //mencegah auto login setelah register
                             auth.signOut()
 
-                            val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
+                            val intent =
+                                Intent(this@SignUpActivity, SignInActivity::class.java).apply {
+                                    flags =
+                                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                }
                             startActivity(intent)
                             finish()
                         } else {

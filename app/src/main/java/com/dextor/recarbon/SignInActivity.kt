@@ -52,7 +52,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         super.onStart()
         val currentUser = auth.currentUser
 
-        if (currentUser != null){
+        if (currentUser != null) {
             startActivity(Intent(this@SignInActivity, MainActivity::class.java))
             finish()
         }
