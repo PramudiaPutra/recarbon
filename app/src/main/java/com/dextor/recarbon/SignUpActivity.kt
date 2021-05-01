@@ -102,18 +102,22 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 //                }
                 if (task.isSuccessful) {
                     val currentUser = auth.currentUser
-                    val addUsername =
-                        UserProfileChangeRequest.Builder().setDisplayName(username).build()
+
+                    //menambah username
+                    val addUsername = UserProfileChangeRequest
+                        .Builder()
+                        .setDisplayName(username)
+                        .build()
+
                     currentUser?.updateProfile(addUsername)?.addOnCompleteListener {
                         if (it.isSuccessful) {
-
                             Toast.makeText(
-                                this@SignUpActivity,
-                                "Register Berhasil",
-                                Toast.LENGTH_LONG
+                                this, "Register Berhasil", Toast.LENGTH_LONG
                             ).show()
 
-                            binding.progressbar.visibility = View.GONE
+                            //mencegah auto login setelah register
+                            auth.signOut()
+
                             val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                             startActivity(intent)
                             finish()
@@ -124,6 +128,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                 }
+                binding.progressbar.visibility = View.GONE
             }
         }
     }

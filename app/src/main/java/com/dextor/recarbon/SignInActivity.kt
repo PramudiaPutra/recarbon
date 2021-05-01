@@ -47,6 +47,17 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    //mengecek apakah user sudah pernah login atau belum
+    override fun onStart() {
+        super.onStart()
+        val currentUser = auth.currentUser
+
+        if (currentUser != null){
+            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+            finish()
+        }
+    }
+
     private fun loginUser() {
         val username = binding.edtUsernameSignin.text.toString()
         val password = binding.edtPasswordSignin.text.toString()
@@ -71,6 +82,8 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
 
             }
             else -> {
+                binding.progressbar.visibility = View.VISIBLE
+
                 auth.signInWithEmailAndPassword(username, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
@@ -80,6 +93,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener {
                             Toast.makeText(this, it.exception?.message, Toast.LENGTH_LONG).show()
 
                         }
+                        binding.progressbar.visibility = View.GONE
                     }
             }
         }
