@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.R
 import com.dextor.recarbon.model.CategoryData
 import com.dextor.recarbon.databinding.ActivityAddCalculateBinding
-import com.dextor.recarbon.dummy.CategoryDummy
+import com.dextor.recarbon.data.CategoryDummy
 import com.dextor.recarbon.features.calculator.categories.CategoryAdapter
 import com.dextor.recarbon.features.calculator.categories.MobilFragment
 import com.dextor.recarbon.features.calculator.categories.MotorFragment

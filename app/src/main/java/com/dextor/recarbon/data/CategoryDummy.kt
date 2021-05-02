@@ -1,4 +1,4 @@
-package com.dextor.recarbon.dummy
+package com.dextor.recarbon.data
 
 import com.dextor.recarbon.R
 import com.dextor.recarbon.model.CategoryData

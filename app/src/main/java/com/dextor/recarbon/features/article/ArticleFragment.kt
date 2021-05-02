@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.databinding.FragmentArticleBinding
-import com.dextor.recarbon.dummy.ArticleDummy
+import com.dextor.recarbon.data.ArticleDummy
 
 class ArticleFragment : Fragment() {
 
