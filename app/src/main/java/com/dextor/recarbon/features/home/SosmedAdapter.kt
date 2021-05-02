@@ -1,4 +1,4 @@
-package com.dextor.recarbon.adapter
+package com.dextor.recarbon.features.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

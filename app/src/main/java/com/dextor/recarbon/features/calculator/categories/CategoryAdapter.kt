@@ -1,12 +1,12 @@
-package com.dextor.recarbon.adapter
+package com.dextor.recarbon.features.calculator.categories
 
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dextor.recarbon.features.calculator.AddCalculateActivity
 import com.dextor.recarbon.model.CategoryData
 import com.dextor.recarbon.databinding.RecyclerCategoryItemBinding
+import com.dextor.recarbon.features.calculator.AddCalculateActivity
 
 class CategoryAdapter(
     items1: AddCalculateActivity,

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dextor.recarbon.adapter.ArticleAdapter
 import com.dextor.recarbon.databinding.FragmentArticleBinding
 import com.dextor.recarbon.dummy.ArticleDummy
 

@@ -5,10 +5,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.R
-import com.dextor.recarbon.adapter.CategoryAdapter
 import com.dextor.recarbon.model.CategoryData
 import com.dextor.recarbon.databinding.ActivityAddCalculateBinding
 import com.dextor.recarbon.dummy.CategoryDummy
+import com.dextor.recarbon.features.calculator.categories.CategoryAdapter
 import com.dextor.recarbon.features.calculator.categories.MobilFragment
 import com.dextor.recarbon.features.calculator.categories.MotorFragment
 

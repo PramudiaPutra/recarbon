@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dextor.recarbon.R
-import com.dextor.recarbon.adapter.HistoryAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.databinding.FragmentCalculateBinding

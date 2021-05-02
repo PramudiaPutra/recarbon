@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
-import com.dextor.recarbon.adapter.HistoryAdapter
+import com.dextor.recarbon.features.calculator.HistoryAdapter
 import com.dextor.recarbon.databinding.FragmentMobilBinding
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.features.calculator.CalculateFragment

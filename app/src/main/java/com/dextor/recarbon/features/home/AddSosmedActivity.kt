@@ -12,7 +12,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
-import com.dextor.recarbon.adapter.SosmedAdapter
 import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.ActivityAddSosmedBinding
 import com.google.firebase.auth.FirebaseAuth

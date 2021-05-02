@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dextor.recarbon.adapter.SosmedAdapter
 import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.FragmentHomeBinding
 //import com.dextor.recarbon.dummy.SosmedDummy
