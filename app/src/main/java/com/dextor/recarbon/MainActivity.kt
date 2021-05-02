@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import com.dextor.recarbon.databinding.ActivityMainBinding
 import com.dextor.recarbon.features.article.ArticleFragment
 import com.dextor.recarbon.features.calculator.CalculateFragment
-import com.dextor.recarbon.features.home.HomeFragment
-import com.dextor.recarbon.features.setting.SettingsFragment
+import com.dextor.recarbon.features.home.SosmedFragment
+import com.dextor.recarbon.features.setting.SettingFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val home = HomeFragment()
+        val home = SosmedFragment()
         val calculate = CalculateFragment()
         val article = ArticleFragment()
-        val setting = SettingsFragment()
+        val setting = SettingFragment()
 
 
         binding.bottomNavigation.selectedItemId = R.id.ic_home

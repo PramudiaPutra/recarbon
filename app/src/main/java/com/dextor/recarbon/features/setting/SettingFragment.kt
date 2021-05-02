@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.dextor.recarbon.features.authentication.SignInActivity
 import com.dextor.recarbon.databinding.FragmentSettingsBinding
+import com.dextor.recarbon.features.setting.item.SettingAccountActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class SettingsFragment : Fragment() {
+class SettingFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
     lateinit var auth: FirebaseAuth
@@ -32,7 +33,7 @@ class SettingsFragment : Fragment() {
         loadProfile()
 
         binding.conAkun.setOnClickListener {
-            val intent = Intent(context, AccountSettingActivity::class.java)
+            val intent = Intent(context, SettingAccountActivity::class.java)
             startActivity(intent)
 
         }

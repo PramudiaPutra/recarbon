@@ -6,21 +6,21 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.R
 import com.dextor.recarbon.model.CategoryData
-import com.dextor.recarbon.databinding.ActivityAddCalculateBinding
 import com.dextor.recarbon.data.CategoryDummy
+import com.dextor.recarbon.databinding.ActivityCalculateAddBinding
 import com.dextor.recarbon.features.calculator.categories.CategoryAdapter
 import com.dextor.recarbon.features.calculator.categories.MobilFragment
 import com.dextor.recarbon.features.calculator.categories.MotorFragment
 
-class AddCalculateActivity : AppCompatActivity() {
+class CalculateAddActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAddCalculateBinding
+    private lateinit var binding: ActivityCalculateAddBinding
     private lateinit var categoryAdapter: CategoryAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddCalculateBinding.inflate(layoutInflater)
+        binding = ActivityCalculateAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val mobilDetailFragment = MobilFragment()
         setFragment(mobilDetailFragment)
@@ -35,13 +35,13 @@ class AddCalculateActivity : AppCompatActivity() {
 
         binding.rvKategori.apply {
 
-            layoutManager = LinearLayoutManager(this@AddCalculateActivity)
+            layoutManager = LinearLayoutManager(this@CalculateAddActivity)
             layoutManager = LinearLayoutManager(
-                this@AddCalculateActivity,
+                this@CalculateAddActivity,
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            categoryAdapter = CategoryAdapter(this@AddCalculateActivity, getCategory)
+            categoryAdapter = CategoryAdapter(this@CalculateAddActivity, getCategory)
             adapter = categoryAdapter
         }
 

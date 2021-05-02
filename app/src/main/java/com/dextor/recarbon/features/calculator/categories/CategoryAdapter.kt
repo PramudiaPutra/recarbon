@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dextor.recarbon.model.CategoryData
 import com.dextor.recarbon.databinding.RecyclerCategoryItemBinding
-import com.dextor.recarbon.features.calculator.AddCalculateActivity
+import com.dextor.recarbon.features.calculator.CalculateAddActivity
 
 class CategoryAdapter(
-    items1: AddCalculateActivity,
+    items1: CalculateAddActivity,
     private val items: List<CategoryData>
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 

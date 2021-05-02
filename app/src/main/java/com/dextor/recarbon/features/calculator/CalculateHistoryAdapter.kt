@@ -15,8 +15,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HistoryAdapter(private val data: ArrayList<HistoryData>) :
-    RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
+    RecyclerView.Adapter<CalculateHistoryAdapter.ViewHolder>() {
 
     private var tgl = mutableListOf<String>()
     private var tanggal = mutableListOf<String>()

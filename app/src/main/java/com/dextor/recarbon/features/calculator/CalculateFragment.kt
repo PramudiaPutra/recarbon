@@ -52,12 +52,12 @@ class CalculateFragment : Fragment() {
         }
 
         with(binding.rvDateHistory) {
-            adapter = HistoryAdapter(list)
+            adapter = CalculateHistoryAdapter(list)
             setHasFixedSize(true)
         }
 
         binding.btnAddCarbon.setOnClickListener {
-            val intent = Intent(context, AddCalculateActivity::class.java)
+            val intent = Intent(context, CalculateAddActivity::class.java)
             startActivity(intent)
         }
 

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
-import com.dextor.recarbon.features.calculator.HistoryAdapter
+import com.dextor.recarbon.features.calculator.CalculateHistoryAdapter
 import com.dextor.recarbon.databinding.FragmentMobilBinding
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.features.calculator.CalculateFragment
@@ -20,7 +20,7 @@ class MobilFragment : Fragment() {
 
     private lateinit var binding: FragmentMobilBinding
     private lateinit var list: ArrayList<HistoryData>
-    private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var calculateHistoryAdapter: CalculateHistoryAdapter
 
 
     override fun onCreateView(
@@ -31,7 +31,7 @@ class MobilFragment : Fragment() {
         binding = FragmentMobilBinding.inflate(layoutInflater, container, false)
 
         list = ArrayList()
-        historyAdapter = HistoryAdapter(list)
+        calculateHistoryAdapter = CalculateHistoryAdapter(list)
         val calculateFragment = CalculateFragment()
 
         binding.btnSimpanDetail.setOnClickListener {
@@ -62,7 +62,7 @@ class MobilFragment : Fragment() {
         val karbon = jarak.toDouble() * 0.27
 
         CalculateFragment.list.add(HistoryData(tanggal, R.drawable.car_black_icon, "Mobil", time, deskripsi, karbon.toString()))
-        historyAdapter.notifyDataSetChanged()
+        calculateHistoryAdapter.notifyDataSetChanged()
 
     }
 

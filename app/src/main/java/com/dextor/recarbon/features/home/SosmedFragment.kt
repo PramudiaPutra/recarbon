@@ -8,17 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.model.SosmedData
-import com.dextor.recarbon.databinding.FragmentHomeBinding
+import com.dextor.recarbon.databinding.FragmentSosmedBinding
+
 //import com.dextor.recarbon.dummy.SosmedDummy
 
-class HomeFragment : Fragment() {
+class SosmedFragment : Fragment() {
 
     companion object{
         val list: ArrayList<SosmedData> =  ArrayList<SosmedData>()
 
     }
 
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentSosmedBinding
     private lateinit var sosmedAdapter: SosmedAdapter
     private lateinit var sosmedItem: ArrayList<SosmedData>
 
@@ -27,7 +28,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding = FragmentSosmedBinding.inflate(layoutInflater, container, false)
 
         sosmedItem = ArrayList()
         for (s in list){
@@ -40,7 +41,7 @@ class HomeFragment : Fragment() {
        initRecycler()
 
         binding.btnAddPosting.setOnClickListener {
-            val intent = Intent(context, AddSosmedActivity::class.java)
+            val intent = Intent(context, SosmedAddActivity::class.java)
             startActivity(intent)
         }
         return binding.root

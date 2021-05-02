@@ -13,12 +13,12 @@ import androidx.core.content.ContextCompat
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
 import com.dextor.recarbon.model.SosmedData
-import com.dextor.recarbon.databinding.ActivityAddSosmedBinding
+import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddSosmedActivity : AppCompatActivity() {
+class SosmedAddActivity : AppCompatActivity() {
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 1
@@ -27,7 +27,7 @@ class AddSosmedActivity : AppCompatActivity() {
 
     private lateinit var list: ArrayList<SosmedData>
     private lateinit var sosmedAdapter: SosmedAdapter
-    private lateinit var binding: ActivityAddSosmedBinding
+    private lateinit var binding: ActivitySosmedAddBinding
 
     private lateinit var imgPosting: Bitmap
     lateinit var auth: FirebaseAuth
@@ -36,7 +36,7 @@ class AddSosmedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddSosmedBinding.inflate(layoutInflater)
+        binding = ActivitySosmedAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         list = ArrayList()
@@ -129,7 +129,7 @@ class AddSosmedActivity : AppCompatActivity() {
         val title = binding.edtJudulPoting.text.toString()
         val content = binding.edtDeskripsiPoting.text.toString()
 
-        HomeFragment.list.add(
+        SosmedFragment.list.add(
             SosmedData(
                 imgUser,
                 username,

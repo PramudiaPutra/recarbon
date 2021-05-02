@@ -1,15 +1,15 @@
-package com.dextor.recarbon.features.setting
+package com.dextor.recarbon.features.setting.item
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.dextor.recarbon.databinding.ActivityAccountSettingBinding
+import com.dextor.recarbon.databinding.ActivitySettingAccountBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
-class AccountSettingActivity : AppCompatActivity() {
+class SettingAccountActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAccountSettingBinding
+    private lateinit var binding: ActivitySettingAccountBinding
     lateinit var auth: FirebaseAuth
 //    private var databaseReference: DatabaseReference? = null
 //    private var database: FirebaseDatabase? = null
@@ -17,7 +17,7 @@ class AccountSettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAccountSettingBinding.inflate(layoutInflater)
+        binding = ActivitySettingAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()

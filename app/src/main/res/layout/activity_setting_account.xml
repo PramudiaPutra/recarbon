@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_recarbon"
-    tools:context="com.dextor.recarbon.features.setting.AccountSettingActivity">
+    tools:context="com.dextor.recarbon.features.setting.item.SettingAccountActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_circular_account"
