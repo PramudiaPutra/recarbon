@@ -1,7 +1,7 @@
 package com.dextor.recarbon.dummy
 
 import com.dextor.recarbon.R
-import com.dextor.recarbon.data.CategoryData
+import com.dextor.recarbon.model.CategoryData
 
 class CategoryDummy {
     companion object {

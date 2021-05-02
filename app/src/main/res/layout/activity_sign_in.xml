@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green_recarbon"
-        tools:context="com.dextor.recarbon.SignInActivity">
+        tools:context="com.dextor.recarbon.features.authentication.SignInActivity">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_circular"

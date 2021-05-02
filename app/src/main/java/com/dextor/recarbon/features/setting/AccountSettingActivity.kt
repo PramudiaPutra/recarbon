@@ -1,4 +1,4 @@
-package com.dextor.recarbon
+package com.dextor.recarbon.features.setting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

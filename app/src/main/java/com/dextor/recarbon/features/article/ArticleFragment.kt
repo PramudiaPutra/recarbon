@@ -1,4 +1,4 @@
-package com.dextor.recarbon.fragment
+package com.dextor.recarbon.features.article
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dextor.recarbon.ArticleActivity
 import com.dextor.recarbon.adapter.ArticleAdapter
 import com.dextor.recarbon.databinding.FragmentArticleBinding
 import com.dextor.recarbon.dummy.ArticleDummy

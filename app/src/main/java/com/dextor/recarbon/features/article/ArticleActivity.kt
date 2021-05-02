@@ -1,10 +1,9 @@
-package com.dextor.recarbon
+package com.dextor.recarbon.features.article
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.dextor.recarbon.data.ArticleData
+import com.dextor.recarbon.model.ArticleData
 import com.dextor.recarbon.databinding.ActivityArticleBinding
-import com.dextor.recarbon.fragment.ArticleFragment
 
 class ArticleActivity : AppCompatActivity() {
 

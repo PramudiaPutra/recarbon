@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_recarbon"
-    tools:context=".AddSosmedActivity">
+    tools:context=".features.home.AddSosmedActivity">
 
     <ImageView
         android:id="@+id/imageView"

@@ -1,18 +1,14 @@
-package com.dextor.recarbon.fragment
+package com.dextor.recarbon.features.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dextor.recarbon.AddSosmedActivity
-import com.dextor.recarbon.adapter.HistoryAdapter
 import com.dextor.recarbon.adapter.SosmedAdapter
-import com.dextor.recarbon.data.HistoryData
-import com.dextor.recarbon.data.SosmedData
+import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.FragmentHomeBinding
 //import com.dextor.recarbon.dummy.SosmedDummy
 

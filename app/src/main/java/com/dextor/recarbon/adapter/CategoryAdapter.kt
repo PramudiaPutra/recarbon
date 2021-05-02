@@ -4,8 +4,8 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dextor.recarbon.AddCalculateActivity
-import com.dextor.recarbon.data.CategoryData
+import com.dextor.recarbon.features.calculator.AddCalculateActivity
+import com.dextor.recarbon.model.CategoryData
 import com.dextor.recarbon.databinding.RecyclerCategoryItemBinding
 
 class CategoryAdapter(

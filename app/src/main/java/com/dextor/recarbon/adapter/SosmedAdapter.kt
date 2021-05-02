@@ -3,7 +3,7 @@ package com.dextor.recarbon.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dextor.recarbon.data.SosmedData
+import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.RecyclerSosmedBinding
 
 class SosmedAdapter(

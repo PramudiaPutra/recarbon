@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.dextor.recarbon.databinding.ActivityMainBinding
-import com.dextor.recarbon.fragment.*
+import com.dextor.recarbon.features.article.ArticleFragment
+import com.dextor.recarbon.features.calculator.CalculateFragment
+import com.dextor.recarbon.features.home.HomeFragment
+import com.dextor.recarbon.features.setting.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 

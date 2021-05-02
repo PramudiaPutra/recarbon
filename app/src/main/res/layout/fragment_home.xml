@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/green_recarbon"
     android:orientation="vertical"
-    tools:context="com.dextor.recarbon.fragment.HomeFragment">
+    tools:context="com.dextor.recarbon.features.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.dextor.recarbon.R
-import com.dextor.recarbon.data.HistoryData
+import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.databinding.RecyclerHistoryItemBinding
 import java.lang.Exception
 import java.text.ParseException

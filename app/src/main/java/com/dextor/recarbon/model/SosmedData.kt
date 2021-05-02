@@ -1,8 +1,7 @@
-package com.dextor.recarbon.data
+package com.dextor.recarbon.model
 
 import android.graphics.Bitmap
 import android.os.Parcelable
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

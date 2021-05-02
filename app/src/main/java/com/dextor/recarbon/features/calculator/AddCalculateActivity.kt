@@ -1,15 +1,16 @@
-package com.dextor.recarbon
+package com.dextor.recarbon.features.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dextor.recarbon.R
 import com.dextor.recarbon.adapter.CategoryAdapter
-import com.dextor.recarbon.data.CategoryData
+import com.dextor.recarbon.model.CategoryData
 import com.dextor.recarbon.databinding.ActivityAddCalculateBinding
 import com.dextor.recarbon.dummy.CategoryDummy
-import com.dextor.recarbon.fragment.*
+import com.dextor.recarbon.features.calculator.categories.MobilFragment
+import com.dextor.recarbon.features.calculator.categories.MotorFragment
 
 class AddCalculateActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class AddCalculateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddCalculateBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val mobilDetailFragment = MobilDetailFragment()
+        val mobilDetailFragment = MobilFragment()
         setFragment(mobilDetailFragment)
         initRecycler()
         binding.tvBack.setOnClickListener {
@@ -46,8 +47,8 @@ class AddCalculateActivity : AppCompatActivity() {
 
         categoryAdapter.setOnItemClickCallback(object : CategoryAdapter.OnItemClickCallback {
             override fun onItemClicked(data: CategoryData) {
-                val mobilDetailFragment = MobilDetailFragment()
-                val motorDetailFragment = MotorDetailFragment()
+                val mobilDetailFragment = MobilFragment()
+                val motorDetailFragment = MotorFragment()
                 when (data.categoryTitle) {
                     "Mobil" -> setFragment(mobilDetailFragment)
                     "Motor" -> setFragment(motorDetailFragment)

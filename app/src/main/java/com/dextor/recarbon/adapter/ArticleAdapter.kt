@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dextor.recarbon.data.ArticleData
+import com.dextor.recarbon.model.ArticleData
 import com.dextor.recarbon.databinding.RecyclerArticleBinding
 
 class ArticleAdapter(

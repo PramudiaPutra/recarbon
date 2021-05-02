@@ -1,4 +1,4 @@
-package com.dextor.recarbon
+package com.dextor.recarbon.features.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import com.dextor.recarbon.MainActivity
+import com.dextor.recarbon.R
 import com.dextor.recarbon.databinding.ActivitySignInBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth

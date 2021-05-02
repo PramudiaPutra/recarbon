@@ -1,4 +1,4 @@
-package com.dextor.recarbon
+package com.dextor.recarbon.features.home
 
 import android.app.Activity
 import android.content.Intent
@@ -7,16 +7,15 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.dextor.recarbon.MainActivity
+import com.dextor.recarbon.R
 import com.dextor.recarbon.adapter.SosmedAdapter
-import com.dextor.recarbon.data.SosmedData
+import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.ActivityAddSosmedBinding
-import com.dextor.recarbon.fragment.HomeFragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 

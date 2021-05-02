@@ -18,15 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReCarbon">
-        <activity android:name=".AddCalculateActivity"></activity>
-        <activity android:name=".AddSosmedActivity" />
-        <activity android:name=".ArticleActivity" />
-        <activity android:name=".AccountSettingActivity" />
+        <activity android:name=".features.calculator.AddCalculateActivity"></activity>
+        <activity android:name=".features.home.AddSosmedActivity" />
+        <activity android:name=".features.article.ArticleActivity" />
+        <activity android:name=".features.setting.AccountSettingActivity" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".features.authentication.SignUpActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".features.authentication.SignInActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SplashScreenActivity">

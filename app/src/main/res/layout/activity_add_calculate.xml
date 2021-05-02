@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green_recarbon"
-    tools:context=".AddCalculateActivity">
+    tools:context=".features.calculator.AddCalculateActivity">
 
     <TextView
         android:id="@+id/tv_back"
@@ -120,7 +120,7 @@
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_detail"
-            tools:layout="@layout/fragment_mobil_detail" />
+            tools:layout="@layout/fragment_mobil" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.dextor.recarbon.dummy
 
 import com.dextor.recarbon.R
-import com.dextor.recarbon.data.ArticleData
+import com.dextor.recarbon.model.ArticleData
 
 class ArticleDummy {
 
