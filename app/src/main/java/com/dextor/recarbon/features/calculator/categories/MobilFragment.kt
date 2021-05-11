@@ -44,11 +44,6 @@ class MobilFragment : Fragment() {
                 it.startActivity(intent)
             }
 
-//            val transaction = activity?.supportFragmentManager?.beginTransaction()
-//            transaction?.replace(R.id.calculateActivity, calculateFragment)
-//            transaction?.disallowAddToBackStack()
-//            transaction?.commit()
-
         }
         return binding.root
     }

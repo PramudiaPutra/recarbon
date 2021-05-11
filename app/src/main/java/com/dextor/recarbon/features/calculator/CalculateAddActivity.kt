@@ -2,6 +2,7 @@ package com.dextor.recarbon.features.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.R
@@ -49,6 +50,7 @@ class CalculateAddActivity : AppCompatActivity() {
             override fun onItemClicked(data: CategoryData) {
                 val mobilDetailFragment = MobilFragment()
                 val motorDetailFragment = MotorFragment()
+                Log.d("Ini data", data.categoryTitle)
                 when (data.categoryTitle) {
                     "Mobil" -> setFragment(mobilDetailFragment)
                     "Motor" -> setFragment(motorDetailFragment)
