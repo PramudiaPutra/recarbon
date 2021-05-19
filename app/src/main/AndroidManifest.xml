@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReCarbon">
-        <activity android:name=".features.calculator.CalculateAddActivity"></activity>
+        <activity
+            android:name=".features.calculator.CalculateAddActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".features.home.SosmedAddActivity" />
         <activity android:name=".features.article.ArticleActivity" />
         <activity android:name=".features.setting.item.SettingAccountActivity" />

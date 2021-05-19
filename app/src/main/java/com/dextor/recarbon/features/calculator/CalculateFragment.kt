@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dextor.recarbon.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.databinding.FragmentCalculateBinding
@@ -16,7 +15,7 @@ import com.dextor.recarbon.databinding.FragmentCalculateBinding
 class CalculateFragment : Fragment() {
 
     companion object{
-        val list: ArrayList<HistoryData> =  ArrayList<HistoryData>()
+        val list: ArrayList<HistoryData> =  ArrayList()
     }
 
     private lateinit var binding: FragmentCalculateBinding
@@ -30,7 +29,7 @@ class CalculateFragment : Fragment() {
     ): View {
         binding = FragmentCalculateBinding.inflate(layoutInflater, container, false)
 
-        historyItem = ArrayList<HistoryData>()
+        historyItem = ArrayList()
 
         BottomSheetBehavior.from(binding.flBottomSheet).apply {
             this.peekHeight = 650
@@ -69,44 +68,44 @@ class CalculateFragment : Fragment() {
         return binding.root
     }
 
-    private fun getData(): ArrayList<HistoryData> {
-        return arrayListOf(
-
-            HistoryData(
-                "2021-04-17T10:41:00+07:00",
-                R.drawable.motor_black_icon,
-                "Motor",
-                "10.00",
-                "Ini Mobil",
-                "1Kg"
-            ),
-            HistoryData(
-                "2021-04-17T10:41:00+07:00",
-                R.drawable.motor_black_icon,
-                "Motor",
-                "10.00",
-                "Ini Mobil",
-                "1Kg"
-            ),
-            HistoryData(
-                "2021-04-17T10:41:00+07:00",
-                R.drawable.motor_black_icon,
-                "Motor",
-                "10.00",
-                "Ini Mobil",
-                "1Kg"
-            ),
-            HistoryData(
-                "2021-04-17T10:41:00+07:00",
-                R.drawable.motor_black_icon,
-                "Motor",
-                "10.00",
-                "Ini Mobil",
-                "1Kg"
-            )
-
-        )
-    }
+//    private fun getData(): ArrayList<HistoryData> {
+//        return arrayListOf(
+//
+//            HistoryData(
+//                "2021-04-17T10:41:00+07:00",
+//                R.drawable.motor_black_icon,
+//                "Motor",
+//                "10.00",
+//                "Ini Mobil",
+//                "1Kg"
+//            ),
+//            HistoryData(
+//                "2021-04-17T10:41:00+07:00",
+//                R.drawable.motor_black_icon,
+//                "Motor",
+//                "10.00",
+//                "Ini Mobil",
+//                "1Kg"
+//            ),
+//            HistoryData(
+//                "2021-04-17T10:41:00+07:00",
+//                R.drawable.motor_black_icon,
+//                "Motor",
+//                "10.00",
+//                "Ini Mobil",
+//                "1Kg"
+//            ),
+//            HistoryData(
+//                "2021-04-17T10:41:00+07:00",
+//                R.drawable.motor_black_icon,
+//                "Motor",
+//                "10.00",
+//                "Ini Mobil",
+//                "1Kg"
+//            )
+//
+//        )
+//    }
 
 
 }

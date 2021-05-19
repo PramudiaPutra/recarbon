@@ -7,116 +7,96 @@
     android:layout_height="match_parent"
     tools:context=".features.calculator.categories.MotorFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/jarak_motor"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_motor_detail"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#29332F"
+        app:cardCornerRadius="7dp"
+        app:contentPadding="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_motor_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#29332F"
-            app:cardCornerRadius="7dp"
-            app:contentPadding="13dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/motor_white_icon" />
+    </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@drawable/motor_white_icon" />
-        </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/tv_jarak_motor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Jarak"
+        android:textColor="@color/font_color_bold"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/cv_motor_detail"
+        app:layout_constraintStart_toEndOf="@id/cv_motor_detail"
+        app:layout_constraintTop_toTopOf="@id/cv_motor_detail" />
 
-        <TextView
-            android:id="@+id/tv_jarak_motor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Jarak"
-            android:textColor="@color/font_color_bold"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/cv_motor_detail"
-            app:layout_constraintStart_toEndOf="@id/cv_motor_detail"
-            app:layout_constraintTop_toTopOf="@id/cv_motor_detail" />
+    <EditText
+        android:id="@+id/ed_jarak"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Dalam Km"
+        android:inputType="numberDecimal"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_jarak_motor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/separator"
+        app:layout_constraintTop_toTopOf="@id/tv_jarak_motor" />
 
-        <EditText
-            android:id="@+id/ed_jarak"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="34dp"
-            android:hint="Dalam Km"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/tv_jarak_motor"
-            app:layout_constraintStart_toEndOf="@id/tv_jarak_motor"
-            app:layout_constraintTop_toTopOf="@id/tv_jarak_motor" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/deskripsi_motor"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_motor_deskripsi"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#29332F"
+        app:cardCornerRadius="7dp"
+        app:contentPadding="13dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jarak_motor">
+        app:layout_constraintTop_toBottomOf="@id/cv_motor_detail">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_motor_deskripsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#29332F"
-            app:cardCornerRadius="7dp"
-            app:contentPadding="13dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/deskripsi_icon" />
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@drawable/deskripsi_icon" />
+    </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/tv_deskripsi_motor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Deskripsi"
+        android:textColor="@color/font_color_bold"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/cv_motor_deskripsi"
+        app:layout_constraintStart_toEndOf="@id/cv_motor_deskripsi"
+        app:layout_constraintTop_toTopOf="@id/cv_motor_deskripsi" />
 
-        <TextView
-            android:id="@+id/tv_deskripsi_motor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Deskripsi"
-            android:textColor="@color/font_color_bold"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@id/cv_motor_deskripsi"
-            app:layout_constraintStart_toEndOf="@id/cv_motor_deskripsi"
-            app:layout_constraintTop_toTopOf="@id/cv_motor_deskripsi" />
-
-        <EditText
-            android:id="@+id/ed_deskripsi"
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:hint="Masukan Deskripsi"
-            android:textSize="12sp"
-            android:gravity="top"
-            android:inputType="textMultiLine"
-            android:lines="4"
-            android:maxLines="2"
-            android:scrollbars="vertical"
-            app:layout_constraintStart_toEndOf="@id/tv_deskripsi_motor"
-            app:layout_constraintTop_toTopOf="@id/tv_deskripsi_motor" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/ed_deskripsi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Masukan Deskripsi"
+        android:inputType="text"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_deskripsi_motor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/separator"
+        app:layout_constraintTop_toTopOf="@id/tv_deskripsi_motor" />
 
     <Button
         android:id="@+id/btnSimpanDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/poppins_medium"
         android:padding="8dp"
@@ -126,6 +106,13 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deskripsi_motor" />
+        app:layout_constraintTop_toBottomOf="@id/cv_motor_deskripsi" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
