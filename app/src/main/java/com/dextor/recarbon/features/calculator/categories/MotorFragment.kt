@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
+import com.dextor.recarbon.constant.CALCULATOR_MENU
+import com.dextor.recarbon.constant.MENU_NAVIGATION
 import com.dextor.recarbon.features.calculator.CalculateHistoryAdapter
 import com.dextor.recarbon.databinding.FragmentMotorBinding
 import com.dextor.recarbon.model.HistoryData
@@ -40,6 +42,7 @@ class MotorFragment : Fragment() {
                 val intent = Intent(it, MainActivity::class.java).apply {
                     flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    putExtra(MENU_NAVIGATION, CALCULATOR_MENU)
                 }
                 it.startActivity(intent)
             }
@@ -56,23 +59,32 @@ class MotorFragment : Fragment() {
         val time = ubahJam()
         val karbon = jarak.toDouble() * 0.15
 
-        CalculateFragment.list.add(HistoryData(tanggal, R.drawable.motor_black_icon, "Motor", time, deskripsi, karbon.toString()))
+        CalculateFragment.list.add(
+            HistoryData(
+                tanggal,
+                R.drawable.motor_black_icon,
+                "Motor",
+                time,
+                deskripsi,
+                karbon.toString()
+            )
+        )
         calculateHistoryAdapter.notifyDataSetChanged()
 
     }
 
-    private fun ubahTanggal(): String{
+    private fun ubahTanggal(): String {
         val dateNow = Calendar.getInstance()
-        dateNow.add(Calendar.DATE,0)
+        dateNow.add(Calendar.DATE, 0)
         val format1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+07:00'", Locale.getDefault())
         format1.timeZone = TimeZone.getTimeZone("Asia/Jakarta")
         val formatted = format1.format(dateNow.time)
         return formatted
     }
 
-    private fun ubahJam(): String{
+    private fun ubahJam(): String {
         val dateNow = Calendar.getInstance()
-        dateNow.add(Calendar.DATE,1)
+        dateNow.add(Calendar.DATE, 1)
         val format1 = SimpleDateFormat("HH:mm", Locale.getDefault())
         println(dateNow.time)
 

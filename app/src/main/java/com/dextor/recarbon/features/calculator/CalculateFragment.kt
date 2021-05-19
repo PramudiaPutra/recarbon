@@ -15,7 +15,7 @@ import com.dextor.recarbon.databinding.FragmentCalculateBinding
 class CalculateFragment : Fragment() {
 
     companion object{
-        val list: ArrayList<HistoryData> =  ArrayList()
+        val list: ArrayList<HistoryData> =  ArrayList<HistoryData>()
     }
 
     private lateinit var binding: FragmentCalculateBinding
@@ -29,7 +29,7 @@ class CalculateFragment : Fragment() {
     ): View {
         binding = FragmentCalculateBinding.inflate(layoutInflater, container, false)
 
-        historyItem = ArrayList()
+        historyItem = ArrayList<HistoryData>()
 
         BottomSheetBehavior.from(binding.flBottomSheet).apply {
             this.peekHeight = 650
