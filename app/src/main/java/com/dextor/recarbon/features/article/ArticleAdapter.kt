@@ -3,7 +3,9 @@ package com.dextor.recarbon.features.article
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
+import com.dextor.recarbon.R
 import com.dextor.recarbon.model.ArticleData
 import com.dextor.recarbon.databinding.RecyclerArticleBinding
 
@@ -21,18 +23,19 @@ class ArticleAdapter(
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         holder.bind(items[position], listener)
+
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    class ArticleViewHolder(private val binding: RecyclerArticleBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class ArticleViewHolder(private val binding: RecyclerArticleBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
             articleData: ArticleData, listener: (ArticleData) -> Unit
         ) = with(binding) {
+
             titleArticle.text = articleData.title
             contentArticle.text = articleData.content
             profileArticle.text = articleData.author

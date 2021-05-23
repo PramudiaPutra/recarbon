@@ -48,6 +48,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_sosmed_list"
                 android:layout_width="match_parent"
+                android:layoutAnimation="@anim/layout_animation"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf="parent"

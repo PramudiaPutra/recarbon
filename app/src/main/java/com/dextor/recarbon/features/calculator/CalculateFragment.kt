@@ -41,7 +41,6 @@ class CalculateFragment : Fragment() {
         }else{
 
             val jumlah = list.sumByDouble {
-                Log.d("Ini Karbon", it.carbon )
                 it.carbon.toDouble()
             }
             binding.jumlahKarbon.text = "$jumlah"
