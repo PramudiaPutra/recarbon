@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HistoryData(
-    var date: String,
-    var icon: Int,
-    val title: String,
-    var time: String,
-    var description: String,
-    var carbon: String
+    var date: String? = null,
+    var icon: Int? = null,
+    val title: String? = null,
+    var time: String? = null,
+    var description: String? = null,
+    var carbon: String? = null
 ):Parcelable

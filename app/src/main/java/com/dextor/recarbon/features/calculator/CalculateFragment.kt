@@ -1,6 +1,5 @@
 package com.dextor.recarbon.features.calculator
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.databinding.FragmentCalculateBinding
@@ -29,118 +27,69 @@ class CalculateFragment : Fragment() {
     private lateinit var binding: FragmentCalculateBinding
     private lateinit var historyItem: ArrayList<HistoryData>
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCalculateBinding.inflate(layoutInflater, container, false)
-
-        historyItem = ArrayList<HistoryData>()
+        historyItem = ArrayList()
+        historyItem.clear()
 
         //mengambil uid
         auth = Firebase.auth
         val currentUser = auth.currentUser
         val currentUserId = currentUser?.uid
-
-
-        //mengambil value tiap data history
         val uid = currentUserId.toString()
 
-        Log.d("Idnya",uid)
         database = FirebaseDatabase.getInstance().reference.child("history").child(uid)
-        getDataCarbon()
+        getDataCarbon(database)
+
+        //bottom sheet
         BottomSheetBehavior.from(binding.flBottomSheet).apply {
             this.peekHeight = 650
             this.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         }
 
-        if (list.isEmpty()){
-            binding.jumlahKarbon.text = "0"
-        }else{
-
-            val jumlah = list.sumByDouble {
-                it.carbon.toDouble()
-            }
-            binding.jumlahKarbon.text = "$jumlah"
-        }
-
-        for (s in list){
-            historyItem.add(s)
-            with(binding.rvDateHistory){
-                adapter?.notifyDataSetChanged()
-            }
-
-        }
-
-        with(binding.rvDateHistory) {
-            adapter = CalculateHistoryAdapter(list)
-            setHasFixedSize(true)
-        }
-
+        //pindah ke halaman kalkulator
         binding.btnAddCarbon.setOnClickListener {
             val intent = Intent(context, CalculateAddActivity::class.java)
             startActivity(intent)
         }
-
         return binding.root
     }
 
-    //Cek jumlah id input histori sesuai user id
-    private fun getDataCarbon(){
-        database.addValueEventListener(object :ValueEventListener{
+    //mengambil data dari firebase
+    private fun getDataCarbon(database: DatabaseReference) {
+        database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val jumlah = dataSnapshot.childrenCount
-                Log.d("JumlahData", "$jumlah")
 
+                //mengambil data dan menampung ke model HistoryData.kt
+                for (snapshot in dataSnapshot.children) {
+                    val history = snapshot.getValue(HistoryData::class.java)
+                    historyItem.add(history!!)
+                }
+
+                //membuat recyclerview
+                with(binding.rvDateHistory) {
+                    adapter = CalculateHistoryAdapter(historyItem)
+                    setHasFixedSize(true)
+                    adapter?.notifyDataSetChanged()
+
+                    //menjumlah total karbon
+                    if (historyItem.isEmpty()) {
+                        binding.jumlahKarbon.text = "0"
+                    } else {
+                        val jumlah = historyItem.sumByDouble {
+                            it.carbon!!.toDouble()
+                        }
+                        binding.jumlahKarbon.text = "$jumlah"
+                    }
+                }
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
-        })
+            override fun onCancelled(databaseError: DatabaseError) {}
+        }
+        )
 
     }
-
-//    private fun getData(): ArrayList<HistoryData> {
-//        return arrayListOf(
-//
-//            HistoryData(
-//                "2021-04-17T10:41:00+07:00",
-//                R.drawable.motor_black_icon,
-//                "Motor",
-//                "10.00",
-//                "Ini Mobil",
-//                "1Kg"
-//            ),
-//            HistoryData(
-//                "2021-04-17T10:41:00+07:00",
-//                R.drawable.motor_black_icon,
-//                "Motor",
-//                "10.00",
-//                "Ini Mobil",
-//                "1Kg"
-//            ),
-//            HistoryData(
-//                "2021-04-17T10:41:00+07:00",
-//                R.drawable.motor_black_icon,
-//                "Motor",
-//                "10.00",
-//                "Ini Mobil",
-//                "1Kg"
-//            ),
-//            HistoryData(
-//                "2021-04-17T10:41:00+07:00",
-//                R.drawable.motor_black_icon,
-//                "Motor",
-//                "10.00",
-//                "Ini Mobil",
-//                "1Kg"
-//            )
-//
-//        )
-//    }
-
-
 }

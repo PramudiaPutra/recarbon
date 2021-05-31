@@ -81,7 +81,7 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
                 }
             }
 
-            iconHistory.setImageResource(historyData.icon)
+            iconHistory.setImageResource(historyData.icon!!)
             titleHistory.text = historyData.title
             timeHistory.text = historyData.time
             descriptionHistory.text = historyData.description
