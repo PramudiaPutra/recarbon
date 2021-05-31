@@ -91,17 +91,7 @@ class MobilFragment : Fragment() {
         database = FirebaseDatabase.getInstance().reference
         database.child("history").child(uid).child(database.push().key.toString()).setValue(history)
 
-//        CalculateFragment.list.add(
-//            HistoryData(
-//                uid,
-//                tanggal,
-//                R.drawable.car_black_icon,
-//                "Mobil",
-//                time,
-//                deskripsi,
-//                karbon.toString()
-//            )
-//        )
+
         calculateHistoryAdapter.notifyDataSetChanged()
 
     }
