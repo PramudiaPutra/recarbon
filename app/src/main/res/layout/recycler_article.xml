@@ -11,78 +11,100 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_horizontal"
-        android:layout_marginTop="@dimen/margin_vertical_small"
-        android:layout_marginEnd="@dimen/margin_horizontal"
-        android:layout_marginBottom="@dimen/margin_vertical_small">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/title_article"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_vertical_small"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_small"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_article"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/story_placeholder_image"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Apa itu jejak karbon (Carbon Footprint)?" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearance="@style/CurveEdgeImage" />
 
-        <TextView
-            android:id="@+id/content_article"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_vertical_small"
-            android:layout_marginBottom="@dimen/margin_vertical_small"
-            android:fontFamily="@font/poppins_light"
-            android:includeFontPadding="false"
-            android:textColor="@color/white"
-            android:maxLines="3"
-            android:ems="4"
-            android:ellipsize="end"
-            android:textSize="@dimen/text_smaller"
-            app:layout_constraintEnd_toEndOf="@id/title_article"
-            app:layout_constraintStart_toStartOf="@id/title_article"
-            app:layout_constraintTop_toBottomOf="@id/title_article"
-            tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
-
-        <TextView
-            android:id="@+id/age_article"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_horizontal"
-            android:layout_marginTop="@dimen/margin_vertical_medium"
-            android:fontFamily="@font/poppins_light"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_smaller"
-            app:layout_constraintStart_toStartOf="@id/content_article"
-            app:layout_constraintTop_toBottomOf="@id/content_article"
-            tools:text="3 menit lalu" />
-
-        <TextView
-            android:id="@+id/profile_article"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_light"
-            tools:text="by Author Name"
-            android:layout_marginEnd="8dp"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/image_profile_article"
-            app:layout_constraintTop_toTopOf="@id/age_article"
-            android:textSize="@dimen/text_smaller" />
-
-        <ImageView
-            android:id="@+id/image_profile_article"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="@dimen/margin_horizontal"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/akun_white_icon"
-            app:layout_constraintBottom_toBottomOf="@id/profile_article"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/profile_article"
-            android:contentDescription="@string/image_profile" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_article">
+
+            <TextView
+                android:id="@+id/title_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_small"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Apa itu jejak karbon (Carbon Footprint)?" />
+
+            <TextView
+                android:id="@+id/content_article"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_vertical_small"
+                android:layout_marginBottom="@dimen/margin_vertical_small"
+                android:ellipsize="end"
+                android:ems="4"
+                android:fontFamily="@font/poppins_light"
+                android:includeFontPadding="false"
+                android:maxLines="3"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_smaller"
+                app:layout_constraintEnd_toEndOf="@id/title_article"
+                app:layout_constraintStart_toStartOf="@id/title_article"
+                app:layout_constraintTop_toBottomOf="@id/title_article"
+                tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+
+            <TextView
+                android:id="@+id/age_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_horizontal"
+                android:layout_marginTop="@dimen/margin_vertical_medium"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_smaller"
+                app:layout_constraintStart_toStartOf="@id/content_article"
+                app:layout_constraintTop_toBottomOf="@id/content_article"
+                tools:text="3 menit lalu" />
+
+            <TextView
+                android:id="@+id/profile_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_smaller"
+                app:layout_constraintEnd_toStartOf="@id/image_profile_article"
+                app:layout_constraintTop_toTopOf="@id/age_article"
+                tools:text="by Author Name" />
+
+            <ImageView
+                android:id="@+id/image_profile_article"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="@dimen/margin_horizontal"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="@string/image_profile"
+                android:src="@drawable/akun_white_icon"
+                app:layout_constraintBottom_toBottomOf="@id/profile_article"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/profile_article" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
