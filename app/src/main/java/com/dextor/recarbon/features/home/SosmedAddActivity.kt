@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -15,6 +16,10 @@ import com.dextor.recarbon.R
 import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -24,15 +29,15 @@ class SosmedAddActivity : AppCompatActivity() {
         private const val CAMERA_PERMISSION_CODE = 1
         private const val CAMERA_REQUEST_CODE = 2
     }
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     private lateinit var list: ArrayList<SosmedData>
     private lateinit var sosmedAdapter: SosmedAdapter
     private lateinit var binding: ActivitySosmedAddBinding
 
     private lateinit var imgPosting: Bitmap
-    lateinit var auth: FirebaseAuth
-//    private var databaseReference: DatabaseReference? = null
-//    private var database: FirebaseDatabase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +46,6 @@ class SosmedAddActivity : AppCompatActivity() {
 
         list = ArrayList()
         sosmedAdapter = SosmedAdapter(list)
-
-        auth = FirebaseAuth.getInstance()
-//        database = FirebaseDatabase.getInstance()
-//        databaseReference = database?.reference!!.child("users")
 
         binding.btnKirimPosting.setOnClickListener {
             saveData()
@@ -107,19 +108,15 @@ class SosmedAddActivity : AppCompatActivity() {
 
     private fun saveData() {
 
+        //mengambil uid
+        auth = Firebase.auth
         val currentUser = auth.currentUser
-//        val userreference = databaseReference?.child(user?.uid!!)
-//        userreference?.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                name = snapshot.child("username").value.toString()
-//                Log.d("SettingsFragment", "Username Awal: $name")
-//            }
+        val currentUserId = currentUser?.uid
+        Log.d("Id Sekarang", "$currentUserId")
 
-//                override fun onCancelled(error: DatabaseError) {
-//                }
-//            })
-
+        val uid = currentUserId.toString()
         val sdf = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
+
         val currentDate = sdf.format(Date())
         val imgUser = R.drawable.postingan_content_image
         val username = currentUser?.displayName
@@ -129,17 +126,22 @@ class SosmedAddActivity : AppCompatActivity() {
         val title = binding.edtJudulPoting.text.toString()
         val content = binding.edtDeskripsiPoting.text.toString()
 
-        SosmedFragment.list.add(
-            SosmedData(
-                imgUser,
-                username,
-                location,
-                date.toString(),
-                imgStory,
-                title,
-                content
-            )
+
+        val postingan = SosmedData(
+            imgUser,
+            username,
+            location,
+            date.toString(),
+            imgStory,
+            title,
+            content
         )
+
+        //menyimpan data postingan ke database
+        database = FirebaseDatabase.getInstance().reference
+        database.child("postingan").child(uid).child(database.push().key.toString())
+            .setValue(postingan)
+
         sosmedAdapter.notifyDataSetChanged()
 
     }

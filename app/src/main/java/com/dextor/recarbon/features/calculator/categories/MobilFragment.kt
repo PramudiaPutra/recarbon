@@ -40,11 +40,8 @@ class MobilFragment : Fragment() {
     ): View {
         binding = FragmentMobilBinding.inflate(layoutInflater, container, false)
 
-//        databaseReference = database?.reference!!.child("carbon")
-
         list = ArrayList()
         calculateHistoryAdapter = CalculateHistoryAdapter(list)
-//        val calculateFragment = CalculateFragment()
 
         binding.btnSimpanDetail.setOnClickListener {
             hitungKarbonMobil()
@@ -114,6 +111,4 @@ class MobilFragment : Fragment() {
         println(formatted)
         return formatted
     }
-
-
 }
