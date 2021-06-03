@@ -25,8 +25,8 @@ class CategoryDummy {
 
             list.add(
                 CategoryData(
-                    R.drawable.plastic_white_icon,
-                    "Plastik",
+                    R.drawable.ic_television_white_icon,
+                    "Televisi",
                     "#013833"
                 )
             )

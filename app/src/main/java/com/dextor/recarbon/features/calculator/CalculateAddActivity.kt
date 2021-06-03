@@ -12,6 +12,7 @@ import com.dextor.recarbon.databinding.ActivityCalculateAddBinding
 import com.dextor.recarbon.features.calculator.categories.CategoryAdapter
 import com.dextor.recarbon.features.calculator.categories.MobilFragment
 import com.dextor.recarbon.features.calculator.categories.MotorFragment
+import com.dextor.recarbon.features.calculator.categories.TelevisiFragment
 
 class CalculateAddActivity : AppCompatActivity() {
 
@@ -50,10 +51,12 @@ class CalculateAddActivity : AppCompatActivity() {
             override fun onItemClicked(data: CategoryData) {
                 val mobilDetailFragment = MobilFragment()
                 val motorDetailFragment = MotorFragment()
+                val televisiFragment = TelevisiFragment()
                 Log.d("Ini data", data.categoryTitle)
                 when (data.categoryTitle) {
                     "Mobil" -> setFragment(mobilDetailFragment)
                     "Motor" -> setFragment(motorDetailFragment)
+                    "Televisi" -> setFragment(televisiFragment)
                 }
             }
         })

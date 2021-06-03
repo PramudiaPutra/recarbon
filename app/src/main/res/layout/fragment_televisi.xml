@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/televisiDetailFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.calculator.categories.TelevisiFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_televisi_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#29332F"
+        app:cardCornerRadius="7dp"
+        app:contentPadding="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ic_television_white_icon" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_jumlah_jam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Lama nyala"
+        android:textColor="@color/font_color_bold"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/cv_televisi_detail"
+        app:layout_constraintStart_toEndOf="@id/cv_televisi_detail"
+        app:layout_constraintTop_toTopOf="@id/cv_televisi_detail" />
+
+    <EditText
+        android:id="@+id/ed_jam"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Dalam jam"
+        android:inputType="numberDecimal"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_jumlah_jam"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/separator"
+        app:layout_constraintTop_toTopOf="@id/tv_jumlah_jam" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_televisi_deskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#29332F"
+        app:cardCornerRadius="7dp"
+        app:contentPadding="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_televisi_detail">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/deskripsi_icon" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_deskripsi_mobil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Deskripsi"
+        android:textColor="@color/font_color_bold"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/cv_televisi_deskripsi"
+        app:layout_constraintStart_toEndOf="@id/cv_televisi_deskripsi"
+        app:layout_constraintTop_toTopOf="@id/cv_televisi_deskripsi" />
+
+    <EditText
+        android:id="@+id/ed_deskripsi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Masukan Deskripsi"
+        android:inputType="text"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_deskripsi_mobil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/separator"
+        app:layout_constraintTop_toTopOf="@id/tv_deskripsi_mobil" />
+
+    <Button
+        android:id="@+id/btnSimpanDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/poppins_medium"
+        android:padding="8dp"
+        android:text="@string/simpan"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_televisi_deskripsi" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
