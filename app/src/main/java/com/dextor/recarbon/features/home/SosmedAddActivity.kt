@@ -137,12 +137,17 @@ class SosmedAddActivity : AppCompatActivity() {
             content
         )
 
-        //menyimpan data postingan ke database
-        database = FirebaseDatabase.getInstance().reference
-        database.child("postingan").child(uid).child(database.push().key.toString())
-            .setValue(postingan)
+        try{
+            //menyimpan data postingan ke database
+            database = FirebaseDatabase.getInstance().reference
+            database.child("postingan").child(uid).child(database.push().key.toString())
+                .setValue(postingan)
 
-        sosmedAdapter.notifyDataSetChanged()
+            sosmedAdapter.notifyDataSetChanged()
+        }catch (e: Exception){
+            Log.d("IniPostingan", "$e")
+        }
+
 
     }
 }

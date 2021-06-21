@@ -15,12 +15,21 @@ import com.dextor.recarbon.databinding.FragmentTelevisiBinding
 import com.dextor.recarbon.features.calculator.CalculateFragment
 import com.dextor.recarbon.features.calculator.CalculateHistoryAdapter
 import com.dextor.recarbon.model.HistoryData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class TelevisiFragment : Fragment() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
+
     private lateinit var binding: FragmentTelevisiBinding
     private lateinit var list: ArrayList<HistoryData>
     private lateinit var calculateHistoryAdapter: CalculateHistoryAdapter
@@ -54,14 +63,21 @@ class TelevisiFragment : Fragment() {
 
     private fun hitungKarbonTelevisi() {
 
+        //mengambil uid
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+        val currentUserId = currentUser?.uid
+
+
+        //mengambil value tiap data history
+        val uid = currentUserId.toString()
         val tanggal = ubahTanggal()
         val jam = binding.edJam.text.toString()
         val deskripsi = binding.edDeskripsi.text.toString()
         val time = ubahJam()
         val karbon = jam.toDouble() * 111.4
 
-        CalculateFragment.list.add(
-            HistoryData(
+        val history = HistoryData(
                 tanggal,
                 R.drawable.ic_television_black_icon,
                 "Televisi",
@@ -69,7 +85,12 @@ class TelevisiFragment : Fragment() {
                 deskripsi,
                 karbon.toString()
             )
-        )
+
+
+        //menyimpan data history ke database
+        database = FirebaseDatabase.getInstance().reference
+        database.child("history").child(uid).child(database.push().key.toString()).setValue(history)
+
         calculateHistoryAdapter.notifyDataSetChanged()
 
     }

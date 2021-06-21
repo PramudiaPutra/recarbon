@@ -14,11 +14,19 @@ import com.dextor.recarbon.features.calculator.CalculateHistoryAdapter
 import com.dextor.recarbon.databinding.FragmentMotorBinding
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.features.calculator.CalculateFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 class MotorFragment : Fragment() {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     private lateinit var binding: FragmentMotorBinding
     private lateinit var list: ArrayList<HistoryData>
@@ -53,22 +61,34 @@ class MotorFragment : Fragment() {
 
     private fun hitungKarbonMotor() {
 
+        //mengambil uid
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+        val currentUserId = currentUser?.uid
+
+
+        //mengambil value tiap data history
+        val uid = currentUserId.toString()
+
         val tanggal = ubahTanggal()
         val jarak = binding.edJarak.text.toString()
         val deskripsi = binding.edDeskripsi.text.toString()
         val time = ubahJam()
         val karbon = jarak.toDouble() * 0.15
 
-        CalculateFragment.list.add(
-            HistoryData(
-                tanggal,
-                R.drawable.motor_black_icon,
-                "Motor",
-                time,
-                deskripsi,
-                karbon.toString()
-            )
+        //menyimpan data history kedalam model
+        val history = HistoryData(
+            tanggal,
+            R.drawable.motor_black_icon,
+            "Motor",
+            time,
+            deskripsi,
+            karbon.toString()
         )
+        //menyimpan data history ke database
+        database = FirebaseDatabase.getInstance().reference
+        database.child("history").child(uid).child(database.push().key.toString()).setValue(history)
+
         calculateHistoryAdapter.notifyDataSetChanged()
 
     }
@@ -78,8 +98,7 @@ class MotorFragment : Fragment() {
         dateNow.add(Calendar.DATE, 0)
         val format1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+07:00'", Locale.getDefault())
         format1.timeZone = TimeZone.getTimeZone("Asia/Jakarta")
-        val formatted = format1.format(dateNow.time)
-        return formatted
+        return format1.format(dateNow.time)
     }
 
     private fun ubahJam(): String {
