@@ -54,6 +54,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.7.0'
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
 
     implementation "androidx.appcompat:appcompat:1.2.0"
     testImplementation 'junit:junit:4.13.2'

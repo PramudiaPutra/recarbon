@@ -1,7 +1,6 @@
 package com.dextor.recarbon.features.home
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -19,24 +18,28 @@ import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
 import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.jar.Manifest
 
 class SosmedAddActivity : AppCompatActivity() {
 
     companion object {
-        private const val REQUEST_IMAGE_CAPTURE = 1
         private const val CAMERA_PERMISSION_CODE = 2
         private const val CAMERA_REQUEST_CODE = 103
     }
+
+    private lateinit var storageReference: StorageReference
 
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
@@ -47,6 +50,8 @@ class SosmedAddActivity : AppCompatActivity() {
 
     private lateinit var imgPosting: Bitmap
     private lateinit var currentPhotoPath: String;
+    private lateinit var fileName: String;
+    private lateinit var contentUri: Uri;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +62,6 @@ class SosmedAddActivity : AppCompatActivity() {
         sosmedAdapter = SosmedAdapter(list)
 
         binding.btnKirimPosting.setOnClickListener {
-            saveData()
             val intent = Intent(this, MainActivity::class.java).apply {
                 flags =
                     Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -71,6 +75,10 @@ class SosmedAddActivity : AppCompatActivity() {
 
         binding.imgFotoPosting.setOnClickListener {
             cameraPermission()
+        }
+
+        binding.btnKirimPosting.setOnClickListener {
+            saveImage()
         }
     }
 
@@ -157,10 +165,25 @@ class SosmedAddActivity : AppCompatActivity() {
                 val f = File(currentPhotoPath)
                 binding.ivImage.setImageURI(Uri.fromFile(f))
                 Log.i("fileUri", Uri.fromFile(f).toString())
+
+                fileName = f.name
+                Log.i("filename", fileName)
+
+                contentUri = Uri.fromFile(f)
             }
         }
     }
 
+
+    private fun saveImage() {
+        storageReference = Firebase.storage.reference.child("uploads").child("camera/$fileName")
+        storageReference.putFile(contentUri).addOnSuccessListener(OnSuccessListener {
+            Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show()
+        })
+            .addOnFailureListener(OnFailureListener {
+                Toast.makeText(this, "upload failed", Toast.LENGTH_SHORT).show()
+            })
+    }
 
     private fun saveData() {
 
