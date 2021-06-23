@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -15,6 +16,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
+import com.dextor.recarbon.constant.CALCULATOR_MENU
+import com.dextor.recarbon.constant.MENU_NAVIGATION
+import com.dextor.recarbon.constant.SOSMED_MENU
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
 import com.dextor.recarbon.model.SosmedData
 import com.google.firebase.auth.FirebaseAuth
@@ -59,14 +63,6 @@ class SosmedAddActivity : AppCompatActivity() {
         list = ArrayList()
         sosmedAdapter = SosmedAdapter(list)
 
-        binding.btnKirimPosting.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java).apply {
-                flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }
-            startActivity(intent)
-        }
-
         binding.tvBack.setOnClickListener {
             onBackPressed()
         }
@@ -77,6 +73,8 @@ class SosmedAddActivity : AppCompatActivity() {
 
         binding.btnKirimPosting.setOnClickListener {
             uploadStory()
+            binding.progressbar.visibility = View.VISIBLE
+
         }
     }
 
@@ -180,6 +178,9 @@ class SosmedAddActivity : AppCompatActivity() {
                 downloadUrl = uri
                 Log.i("file url", downloadUrl.toString())
                 saveData(downloadUrl)
+                binding.progressbar.visibility = View.GONE
+
+                intentHome()
             }
         }
             .addOnFailureListener {
@@ -218,18 +219,22 @@ class SosmedAddActivity : AppCompatActivity() {
             content
         )
 
-        try {
             //menyimpan data postingan ke database
             database = FirebaseDatabase.getInstance().reference
             database.child("stories").child(database.push().key.toString())
                 .setValue(story)
 
             sosmedAdapter.notifyDataSetChanged()
-        } catch (e: Exception) {
-            Log.d("IniPostingan", "$e")
+
+    }
+
+    private fun intentHome(){
+        val intent = Intent(this, MainActivity::class.java).apply {
+            flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra(MENU_NAVIGATION, SOSMED_MENU)
         }
-
-
+        startActivity(intent)
     }
 }
 

@@ -7,10 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dextor.recarbon.databinding.FragmentCalculateBinding
-import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.FragmentSosmedBinding
-import com.dextor.recarbon.model.HistoryData
+import com.dextor.recarbon.model.SosmedData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -20,15 +18,9 @@ import com.google.firebase.ktx.Firebase
 
 class SosmedFragment : Fragment() {
 
-    companion object {
-        val list: ArrayList<SosmedData> = ArrayList<SosmedData>()
-    }
-
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
-
     private lateinit var binding: FragmentSosmedBinding
-    private lateinit var sosmedAdapter: SosmedAdapter
     private lateinit var sosmedItem: ArrayList<SosmedData>
 
     override fun onCreateView(
@@ -37,14 +29,10 @@ class SosmedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSosmedBinding.inflate(layoutInflater, container, false)
-
         sosmedItem = ArrayList()
         sosmedItem.clear()
 
         auth = Firebase.auth
-        val currentUser = auth.currentUser
-        val currentUserId = currentUser?.uid
-        val uid = currentUserId.toString()
 
         database = FirebaseDatabase.getInstance().reference.child("stories")
         getStory(database)
@@ -66,8 +54,14 @@ class SosmedFragment : Fragment() {
                     sosmedItem.add(stories!!)
                 }
 
+                binding.progressbar.visibility = View.GONE
+
                 with(binding.rvSosmedList) {
-                    layoutManager = LinearLayoutManager(context)
+                    val linearLayoutManager = LinearLayoutManager(context)
+                    linearLayoutManager.reverseLayout = true
+                    linearLayoutManager.stackFromEnd = true
+
+                    layoutManager = linearLayoutManager
                     adapter = SosmedAdapter(sosmedItem)
                     setHasFixedSize(true)
                     adapter?.notifyDataSetChanged()

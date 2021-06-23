@@ -20,7 +20,7 @@ class SosmedAdapter(private val items: ArrayList<SosmedData>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val dataV = items[position]
-        holder.bind(dataV, position)
+        holder.bind(dataV)
     }
 
     override fun getItemCount(): Int {
@@ -29,7 +29,7 @@ class SosmedAdapter(private val items: ArrayList<SosmedData>) :
 
     inner class ViewHolder(private val binding: RecyclerSosmedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(sosmedData: SosmedData, position: Int) = with(binding) {
+        fun bind(sosmedData: SosmedData) = with(binding) {
 
             imgUserSosmed.setImageResource(sosmedData.imgUser!!)
             usernameSosmed.text = sosmedData.username.toString()
