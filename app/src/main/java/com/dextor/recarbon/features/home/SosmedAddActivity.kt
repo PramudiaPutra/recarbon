@@ -1,5 +1,6 @@
 package com.dextor.recarbon.features.home
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -16,7 +17,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
-import com.dextor.recarbon.constant.CALCULATOR_MENU
 import com.dextor.recarbon.constant.MENU_NAVIGATION
 import com.dextor.recarbon.constant.SOSMED_MENU
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
@@ -81,12 +81,12 @@ class SosmedAddActivity : AppCompatActivity() {
     private fun cameraPermission() {
         if (ContextCompat.checkSelfPermission(
                 this,
-                android.Manifest.permission.CAMERA
+                Manifest.permission.CAMERA
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(android.Manifest.permission.CAMERA),
+                arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
                 CAMERA_PERMISSION_CODE
             )
         } else {
