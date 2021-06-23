@@ -3,23 +3,20 @@ package com.dextor.recarbon.features.home
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
-import com.dextor.recarbon.model.SosmedData
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
+import com.dextor.recarbon.model.SosmedData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -31,6 +28,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class SosmedAddActivity : AppCompatActivity() {
 
@@ -48,10 +46,10 @@ class SosmedAddActivity : AppCompatActivity() {
     private lateinit var sosmedAdapter: SosmedAdapter
     private lateinit var binding: ActivitySosmedAddBinding
 
-    private lateinit var imgPosting: Bitmap
-    private lateinit var currentPhotoPath: String;
-    private lateinit var fileName: String;
-    private lateinit var contentUri: Uri;
+    private lateinit var currentPhotoPath: String
+    private lateinit var fileName: String
+    private lateinit var contentUri: Uri
+    private lateinit var downloadUrl: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +76,7 @@ class SosmedAddActivity : AppCompatActivity() {
         }
 
         binding.btnKirimPosting.setOnClickListener {
-            saveImage()
+            uploadStory()
         }
     }
 
@@ -98,15 +96,15 @@ class SosmedAddActivity : AppCompatActivity() {
         }
     }
 
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, CAMERA_REQUEST_CODE)
-    }
+//    private fun openCamera() {
+//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+//        startActivityForResult(intent, CAMERA_REQUEST_CODE)
+//    }
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
         // Create an image file name
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(Date())
         val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */
@@ -174,44 +172,48 @@ class SosmedAddActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun saveImage() {
+    private fun uploadStory() {
         storageReference = Firebase.storage.reference.child("uploads").child("camera/$fileName")
-        storageReference.putFile(contentUri).addOnSuccessListener(OnSuccessListener {
-            Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show()
-        })
-            .addOnFailureListener(OnFailureListener {
+        storageReference.putFile(contentUri).addOnSuccessListener {
+
+            storageReference.downloadUrl.addOnSuccessListener { uri ->
+                downloadUrl = uri
+                Log.i("file url", downloadUrl.toString())
+                saveData(downloadUrl)
+            }
+        }
+            .addOnFailureListener {
                 Toast.makeText(this, "upload failed", Toast.LENGTH_SHORT).show()
-            })
+            }
     }
 
-    private fun saveData() {
+    private fun saveData(downloadUrl: Uri) {
+        Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show()
 
         //mengambil uid
         auth = Firebase.auth
         val currentUser = auth.currentUser
         val currentUserId = currentUser?.uid
-        Log.d("Id Sekarang", "$currentUserId")
 
         val uid = currentUserId.toString()
         val sdf = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
 
         val currentDate = sdf.format(Date())
-        val imgUser = R.drawable.postingan_content_image
+        val imgUser = R.drawable.user_placeholder
         val username = currentUser?.displayName
         val location = binding.edtLokasiPoting.text.toString()
-        val date = currentDate
-        val imgStory = imgPosting
+        val imgStory = downloadUrl
         val title = binding.edtJudulPoting.text.toString()
         val content = binding.edtDeskripsiPoting.text.toString()
 
 
-        val postingan = SosmedData(
+        val story = SosmedData(
+            uid,
             imgUser,
             username,
             location,
-            date.toString(),
-            imgStory,
+            currentDate.toString(),
+            imgStory.toString(),
             title,
             content
         )
@@ -219,8 +221,8 @@ class SosmedAddActivity : AppCompatActivity() {
         try {
             //menyimpan data postingan ke database
             database = FirebaseDatabase.getInstance().reference
-            database.child("postingan").child(uid).child(database.push().key.toString())
-                .setValue(postingan)
+            database.child("stories").child(database.push().key.toString())
+                .setValue(story)
 
             sosmedAdapter.notifyDataSetChanged()
         } catch (e: Exception) {

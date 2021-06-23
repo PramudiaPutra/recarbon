@@ -34,13 +34,13 @@ class SosmedAdapter(
             sosmedData: SosmedData,
             position: Int
         ) = with(binding) {
-            imgUserSosmed.setImageResource(sosmedData.imgUser)
-            usernameSosmed.text = sosmedData.username.toString()
-            locationSosmed.text = sosmedData.location
-            dateSosmed.text = sosmedData.date
-            imgSosmed.setImageBitmap(sosmedData.imgStory)
-            titleSosmed.text = sosmedData.title
-            contentSosmed.text = sosmedData.content
+//            imgUserSosmed.setImageResource(sosmedData.imgUser)
+//            usernameSosmed.text = sosmedData.username.toString()
+//            locationSosmed.text = sosmedData.location
+//            dateSosmed.text = sosmedData.date
+//            imgSosmed.setImageBitmap(sosmedData.imgStory)
+//            titleSosmed.text = sosmedData.title
+//            contentSosmed.text = sosmedData.content
         }
     }
 }
