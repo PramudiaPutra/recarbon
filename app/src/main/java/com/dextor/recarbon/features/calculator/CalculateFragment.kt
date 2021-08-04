@@ -17,13 +17,12 @@ import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import java.math.BigDecimal
 import java.math.RoundingMode
-import kotlin.math.roundToInt
 
 
 class CalculateFragment : Fragment() {
 
     companion object{
-        val list: ArrayList<HistoryData> =  ArrayList<HistoryData>()
+        val list: ArrayList<HistoryData> =  ArrayList()
     }
 
     private lateinit var auth: FirebaseAuth
@@ -77,7 +76,7 @@ class CalculateFragment : Fragment() {
                 //membuat recyclerview
                 with(binding.rvDateHistory) {
                     val linearLayoutManager = LinearLayoutManager(context)
-//                    linearLayoutManager.reverseLayout = true
+                    linearLayoutManager.reverseLayout = true
                     linearLayoutManager.stackFromEnd = true
                     layoutManager = linearLayoutManager
                     adapter = CalculateHistoryAdapter(historyItem)

@@ -29,18 +29,16 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
 
     private fun sortingDate() {
         for (index in data) {
-            Log.d("HistoryAdapter", "Isi Data Tanggal" + index.date)
             formatDate(index.date).let {
                 tgl.add(it)
             }
         }
 
+
         for (index in tgl) {
-            if (tanggal.contains(index)) {
-                tanggal.add("")
-            } else {
+            do {
                 tanggal.add(index)
-            }
+            } while (!tanggal.contains(index))
         }
     }
 
@@ -68,19 +66,19 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
             } else {
                 dateItem.isVisible
 
-                setItemDate(tanggal[position]).let {
-                    when (it) {
-                        in 0..24 -> {
-                            dateItem.text = root.context.getString(R.string.hari_ini)
-                        }
-                        in 25..48 -> {
-                            dateItem.text = root.context.getString(R.string.kemarin)
-                        }
-                        else -> {
-                            dateItem.text = tanggal[position]
-                        }
-                    }
-                }
+//                setItemDate(tanggal[position]).let {
+//                    when (it) {
+//                        in 0..24 -> {
+//                            dateItem.text = root.context.getString(R.string.hari_ini)
+//                        }
+//                        in 25..48 -> {
+//                            dateItem.text = root.context.getString(R.string.kemarin)
+//                        }
+//                        else -> {
+                dateItem.text = tanggal[position]
+//                        }
+//                    }
+//                }
             }
 
             iconHistory.setImageResource(historyData.icon!!)
@@ -88,7 +86,8 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
             timeHistory.text = historyData.time
             descriptionHistory.text = historyData.description
 //            carbonHistory.text = historyData.carbon
-            carbonHistory.text = "${BigDecimal(historyData.carbon).setScale(2, RoundingMode.HALF_EVEN)}"
+            carbonHistory.text =
+                "${BigDecimal(historyData.carbon).setScale(2, RoundingMode.HALF_EVEN)}"
 
         }
     }
@@ -100,7 +99,6 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
             Locale.getDefault()
         ).format(Calendar.getInstance().time)
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-        Log.e("HistoryAdapter", "Ini tanggal : $tanggal")
         try {
             val date1 = simpleDateFormat.parse(tanggal)!!
             val date2 = simpleDateFormat.parse(currentDate)!!
@@ -117,7 +115,6 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
 
 
     private fun formatDate(inputDate: String?): String {
-        Log.e("Input Date", "Kie:$inputDate")
         val parsed: Date?
         val dateInput = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'+07:00'", Locale.getDefault())
         val dateOutput = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
@@ -135,7 +132,6 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
     }
 
     private fun formatDate2(inputDate: String?): String {
-        Log.e("Input Date", "Kie:$inputDate")
         val parsed: Date?
         val dateInput = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         val dateOutput = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
