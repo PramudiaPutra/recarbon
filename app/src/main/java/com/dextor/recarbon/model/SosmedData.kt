@@ -1,16 +1,17 @@
 package com.dextor.recarbon.model
 
-import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class SosmedData(
-    val imgUser: Int,
-    val username: String?,
-    val location: String,
-    val date: String,
-    val imgStory: Bitmap,
-    val title: String,
-    val content: String
+    val uid: String? = null,
+    val imgUser: Int? = null,
+    val username: String? = null,
+    val location: String? = null,
+    val date: String? = null,
+    val imgStory: String? = null,
+    val title: String? = null,
+    val content: String? = null
 ) : Parcelable

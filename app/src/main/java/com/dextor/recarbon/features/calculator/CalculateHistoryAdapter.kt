@@ -10,6 +10,8 @@ import com.dextor.recarbon.R
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.databinding.RecyclerHistoryItemBinding
 import java.lang.Exception
+import java.math.BigDecimal
+import java.math.RoundingMode
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -85,7 +87,8 @@ class CalculateHistoryAdapter(private val data: ArrayList<HistoryData>) :
             titleHistory.text = historyData.title
             timeHistory.text = historyData.time
             descriptionHistory.text = historyData.description
-            carbonHistory.text = historyData.carbon
+//            carbonHistory.text = historyData.carbon
+            carbonHistory.text = "${BigDecimal(historyData.carbon).setScale(2, RoundingMode.HALF_EVEN)}"
 
         }
     }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.dextor.recarbon.constant.CALCULATOR_MENU
 import com.dextor.recarbon.constant.MENU_NAVIGATION
+import com.dextor.recarbon.constant.SOSMED_MENU
 import com.dextor.recarbon.databinding.ActivityMainBinding
 import com.dextor.recarbon.features.article.ArticleFragment
 import com.dextor.recarbon.features.calculator.CalculateFragment
@@ -34,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         if (menuPossition == CALCULATOR_MENU) {
             setFragment(calculate)
             binding.bottomNavigation.selectedItemId = R.id.ic_kalkulator
+        }
+
+        if (menuPossition == SOSMED_MENU) {
+            setFragment(home)
+            binding.bottomNavigation.selectedItemId = R.id.ic_home
         }
 
         binding.bottomNavigation.setOnNavigationItemSelectedListener {

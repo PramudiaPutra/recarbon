@@ -14,6 +14,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
+import java.math.BigDecimal
+import java.math.RoundingMode
+import kotlin.math.roundToInt
 
 
 class CalculateFragment : Fragment() {
@@ -83,7 +86,7 @@ class CalculateFragment : Fragment() {
                         val jumlah = historyItem.sumByDouble {
                             it.carbon!!.toDouble()
                         }
-                        binding.jumlahKarbon.text = "$jumlah"
+                        binding.jumlahKarbon.text = "${BigDecimal(jumlah).setScale(2, RoundingMode.HALF_EVEN)}"
                     }
                 }
             }
