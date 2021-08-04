@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.dextor.recarbon.model.HistoryData
 import com.dextor.recarbon.databinding.FragmentCalculateBinding
@@ -75,11 +76,15 @@ class CalculateFragment : Fragment() {
 
                 //membuat recyclerview
                 with(binding.rvDateHistory) {
+                    val linearLayoutManager = LinearLayoutManager(context)
+//                    linearLayoutManager.reverseLayout = true
+                    linearLayoutManager.stackFromEnd = true
+                    layoutManager = linearLayoutManager
                     adapter = CalculateHistoryAdapter(historyItem)
                     setHasFixedSize(true)
                     adapter?.notifyDataSetChanged()
-
-                    //menjumlah total karbon
+//
+//                    menjumlah total karbon
                     if (historyItem.isEmpty()) {
                         binding.jumlahKarbon.text = "0"
                     } else {

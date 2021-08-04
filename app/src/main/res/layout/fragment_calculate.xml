@@ -120,7 +120,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_date_history"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="32dp"
             android:layout_marginTop="100dp"
             android:layout_marginEnd="32dp"
@@ -132,5 +132,6 @@
             tools:listitem="@layout/recycler_history_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
