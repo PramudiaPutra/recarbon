@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dextor.recarbon.databinding.FragmentSosmedBinding
+import com.dextor.recarbon.features.home.posting.CameraActivity
+import com.dextor.recarbon.features.home.posting.SosmedAddActivity
 import com.dextor.recarbon.model.SosmedData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -38,7 +40,7 @@ class SosmedFragment : Fragment() {
         getStory(database)
 
         binding.btnAddPosting.setOnClickListener {
-            val intent = Intent(context, SosmedAddActivity::class.java)
+            val intent = Intent(context, CameraActivity::class.java)
             startActivity(intent)
         }
         return binding.root

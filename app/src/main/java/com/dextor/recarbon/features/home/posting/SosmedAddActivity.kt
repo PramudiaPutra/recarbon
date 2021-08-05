@@ -1,4 +1,4 @@
-package com.dextor.recarbon.features.home
+package com.dextor.recarbon.features.home.posting
 
 import android.Manifest
 import android.app.Activity
@@ -20,6 +20,7 @@ import com.dextor.recarbon.R
 import com.dextor.recarbon.constant.MENU_NAVIGATION
 import com.dextor.recarbon.constant.SOSMED_MENU
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
+import com.dextor.recarbon.features.home.SosmedAdapter
 import com.dextor.recarbon.model.SosmedData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
