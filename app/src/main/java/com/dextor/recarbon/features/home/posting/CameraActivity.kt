@@ -2,13 +2,13 @@ package com.dextor.recarbon.features.home.posting
 
 import com.dextor.recarbon.R
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -18,13 +18,15 @@ import com.dextor.recarbon.databinding.ActivityCameraBinding
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.ExecutorService
 
 class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
+    private var preview: Preview? = null
+    private var selectedCamera = CameraSelector.DEFAULT_BACK_CAMERA
 
     private lateinit var outputDirectory: File
-    private lateinit var cameraExecutorService: ExecutorService
+
+    //    private lateinit var cameraExecutorService: ExecutorService
     private lateinit var binding: ActivityCameraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,31 +37,63 @@ class CameraActivity : AppCompatActivity() {
 
         requestingPermissions()
         outputDirectory = getOutputDirectory()
-        binding.cameraButton.setOnClickListener { takePhoto() }
-    }
 
-    private fun requestingPermissions() {
-        if (permissionsGranted()) {
-            startCamera()
-        } else {
-            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSION)
+        with(binding) {
+            cameraButton.setOnClickListener {
+                //take picture effect
+                takePictureEffect.visibility = View.VISIBLE
+                takePictureEffect.postDelayed({ takePictureEffect.visibility = View.GONE }, 200L)
+
+                val bitmap = binding.cameraPreview.bitmap
+                if (bitmap != null) getCapturedPreview(bitmap)
+//            takePhoto()
+            }
+
+            switchCameraButton.setOnClickListener {
+                selectedCamera = if (selectedCamera == CameraSelector.DEFAULT_BACK_CAMERA) {
+                    CameraSelector.DEFAULT_FRONT_CAMERA
+                } else {
+                    CameraSelector.DEFAULT_BACK_CAMERA
+                }
+                startCamera()
+            }
+
+            backButton.setOnClickListener {
+                if (capturedPreview.visibility != View.GONE) {
+                    with(binding) {
+                        //View Visible
+                        cameraPreview.visibility = View.VISIBLE
+                        cameraButton.visibility = View.VISIBLE
+                        switchCameraButton.visibility = View.VISIBLE
+
+                        //View Gone
+                        capturedPreview.visibility = View.GONE
+                        backButton.visibility = View.GONE
+                        confirmButton.visibility = View.GONE
+                    }
+                }
+            }
+
+            exitButton.setOnClickListener { onBackPressed() }
         }
     }
 
-    private fun permissionsGranted(): Boolean = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
-    }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_PERMISSION && permissionsGranted()) {
-            startCamera()
-        } else {
-            Toast.makeText(this, "camera permission denied", Toast.LENGTH_SHORT).show()
+    private fun getCapturedPreview(bitmap: Bitmap) {
+        with(binding) {
+
+            //View Gone
+            cameraPreview.visibility = View.GONE
+            cameraButton.visibility = View.GONE
+            switchCameraButton.visibility = View.GONE
+
+            //View Visible
+            capturedPreview.visibility = View.VISIBLE
+            backButton.visibility = View.VISIBLE
+            confirmButton.visibility = View.VISIBLE
+
+            //Set captured image
+            capturedPreview.setImageBitmap(bitmap)
         }
     }
 
@@ -68,9 +102,8 @@ class CameraActivity : AppCompatActivity() {
 
         cameraProviderFuture.addListener({
             val cameraProvider = cameraProviderFuture.get()
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
-            val preview = Preview
+            preview = Preview
                 .Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
                 .build()
@@ -85,7 +118,7 @@ class CameraActivity : AppCompatActivity() {
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture)
+                cameraProvider.bindToLifecycle(this, selectedCamera, preview, imageCapture)
             } catch (e: Exception) {
                 Log.e("camera failed", "error", e)
             }
@@ -135,6 +168,31 @@ class CameraActivity : AppCompatActivity() {
 //        super.onDestroy()
 //        cameraExecutorService.shutdown()
 //    }
+
+    private fun requestingPermissions() {
+        if (permissionsGranted()) {
+            startCamera()
+        } else {
+            ActivityCompat.requestPermissions(this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSION)
+        }
+    }
+
+    private fun permissionsGranted(): Boolean = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_CODE_PERMISSION && permissionsGranted()) {
+            startCamera()
+        } else {
+            Toast.makeText(this, "camera permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     companion object {
         private const val REQUEST_CODE_PERMISSION = 101
