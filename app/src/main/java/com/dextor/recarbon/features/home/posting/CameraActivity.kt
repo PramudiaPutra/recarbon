@@ -40,13 +40,15 @@ class CameraActivity : AppCompatActivity() {
 
         with(binding) {
             cameraButton.setOnClickListener {
+                val bitmap = binding.cameraPreview.bitmap
+                if (bitmap != null) {
+                    getCapturedPreview(bitmap)
+                    takePhoto()
+                }
+
                 //take picture effect
                 takePictureEffect.visibility = View.VISIBLE
-                takePictureEffect.postDelayed({ takePictureEffect.visibility = View.GONE }, 200L)
-
-                val bitmap = binding.cameraPreview.bitmap
-                if (bitmap != null) getCapturedPreview(bitmap)
-//            takePhoto()
+                takePictureEffect.postDelayed({ takePictureEffect.visibility = View.GONE }, 500L)
             }
 
             switchCameraButton.setOnClickListener {
