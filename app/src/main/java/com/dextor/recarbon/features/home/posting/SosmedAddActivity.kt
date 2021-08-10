@@ -1,6 +1,5 @@
 package com.dextor.recarbon.features.home.posting
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,12 +11,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
 import com.dextor.recarbon.constant.MENU_NAVIGATION
+import com.dextor.recarbon.constant.IMAGE_PATH
 import com.dextor.recarbon.constant.SOSMED_MENU
 import com.dextor.recarbon.databinding.ActivitySosmedAddBinding
 import com.dextor.recarbon.features.home.SosmedAdapter
@@ -61,6 +59,12 @@ class SosmedAddActivity : AppCompatActivity() {
         binding = ActivitySosmedAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val imagePath = intent.getStringExtra(IMAGE_PATH)
+        val imageUri = Uri.parse(imagePath)
+        binding.storyImage.setImageURI(imageUri)
+
+        binding.storyImage
+
         list = ArrayList()
         sosmedAdapter = SosmedAdapter(list)
 
@@ -68,37 +72,29 @@ class SosmedAddActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        binding.imgFotoPosting.setOnClickListener {
-            cameraPermission()
-        }
-
-        binding.btnKirimPosting.setOnClickListener {
-            uploadStory()
-            binding.progressbar.visibility = View.VISIBLE
+        binding.postingButton.setOnClickListener {
+//            uploadStory()
+//            binding.progressbar.visibility = View.VISIBLE
 
         }
     }
 
-    private fun cameraPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                CAMERA_PERMISSION_CODE
-            )
-        } else {
-            dispatchTakePictureIntent()
-        }
-    }
-
-//    private fun openCamera() {
-//        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-//        startActivityForResult(intent, CAMERA_REQUEST_CODE)
+//    private fun cameraPermission() {
+//        if (ContextCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.CAMERA
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
+//                CAMERA_PERMISSION_CODE
+//            )
+//        } else {
+//            dispatchTakePictureIntent()
+//        }
 //    }
+
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
@@ -160,7 +156,7 @@ class SosmedAddActivity : AppCompatActivity() {
         if (requestCode == CAMERA_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 val f = File(currentPhotoPath)
-                binding.ivImage.setImageURI(Uri.fromFile(f))
+                binding.storyImage.setImageURI(Uri.fromFile(f))
                 Log.i("fileUri", Uri.fromFile(f).toString())
 
                 fileName = f.name

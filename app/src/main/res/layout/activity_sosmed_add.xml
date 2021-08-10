@@ -9,11 +9,11 @@
     tools:context=".features.home.posting.SosmedAddActivity">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/check_button"
+        android:id="@+id/posting_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_vertical_small"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="24dp"
         android:background="?android:selectableItemBackgroundBorderless"
         android:src="@drawable/cirlce_check_icon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +51,7 @@
         android:layout_marginEnd="8dp"
         android:background="@null"
         android:hint="Tambahkan Captions..."
+        android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/profile_image"
         app:layout_constraintEnd_toStartOf="@id/story_image"
@@ -62,25 +63,23 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        android:background="@color/grey_thin_recarbon"
-        app:layout_constraintEnd_toEndOf="@id/check_button"
-        app:layout_constraintTop_toBottomOf="@id/check_button" />
+        app:layout_constraintEnd_toEndOf="@id/posting_button"
+        app:layout_constraintTop_toBottomOf="@id/posting_button" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rounded_top_corner_view"
         android:orientation="vertical"
-        android:padding="@dimen/margin_horizontal"
-        android:paddingStart="32dp"
-        android:layout_marginTop="32dp"
-        android:paddingEnd="32dp"
+        android:padding="24dp"
         android:paddingBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/story_image">
 
         <EditText
+            android:inputType="text"
             android:id="@+id/edt_judulPoting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,6 +90,7 @@
 
 
         <EditText
+            android:inputType="text"
             android:id="@+id/edt_lokasiPoting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

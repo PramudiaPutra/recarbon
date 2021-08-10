@@ -1,12 +1,12 @@
 package com.dextor.recarbon.features.home.posting
 
+import android.content.Intent
 import com.dextor.recarbon.R
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -14,6 +14,9 @@ import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.dextor.recarbon.constant.FILENAME_FORMAT
+import com.dextor.recarbon.constant.IMAGE_PATH
+import com.dextor.recarbon.constant.REQUEST_CODE_PERMISSION
 import com.dextor.recarbon.databinding.ActivityCameraBinding
 import java.io.File
 import java.text.SimpleDateFormat
@@ -23,7 +26,7 @@ class CameraActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
     private var preview: Preview? = null
     private var selectedCamera = CameraSelector.DEFAULT_BACK_CAMERA
-
+    private var pictureUri: Uri? = null
     private lateinit var outputDirectory: File
 
     //    private lateinit var cameraExecutorService: ExecutorService
@@ -39,16 +42,19 @@ class CameraActivity : AppCompatActivity() {
         outputDirectory = getOutputDirectory()
 
         with(binding) {
-            cameraButton.setOnClickListener {
+            takePictureButton.setOnClickListener {
+                takePhoto()
                 val bitmap = binding.cameraPreview.bitmap
                 if (bitmap != null) {
-                    getCapturedPreview(bitmap)
-                    takePhoto()
+                    captureImage(bitmap)
                 }
+            }
 
-                //take picture effect
-                takePictureEffect.visibility = View.VISIBLE
-                takePictureEffect.postDelayed({ takePictureEffect.visibility = View.GONE }, 500L)
+            confirmPictureButton.setOnClickListener {
+                val intent = Intent(this@CameraActivity, SosmedAddActivity::class.java).apply {
+                    putExtra(IMAGE_PATH, pictureUri.toString())
+                }
+                startActivity(intent)
             }
 
             switchCameraButton.setOnClickListener {
@@ -65,13 +71,13 @@ class CameraActivity : AppCompatActivity() {
                     with(binding) {
                         //View Visible
                         cameraPreview.visibility = View.VISIBLE
-                        cameraButton.visibility = View.VISIBLE
+                        takePictureButton.visibility = View.VISIBLE
                         switchCameraButton.visibility = View.VISIBLE
 
                         //View Gone
                         capturedPreview.visibility = View.GONE
                         backButton.visibility = View.GONE
-                        confirmButton.visibility = View.GONE
+                        confirmPictureButton.visibility = View.GONE
                     }
                 }
             }
@@ -81,21 +87,26 @@ class CameraActivity : AppCompatActivity() {
     }
 
 
-    private fun getCapturedPreview(bitmap: Bitmap) {
+    private fun captureImage(bitmap: Bitmap) {
+
         with(binding) {
+
+            //take picture effect
+            takePictureEffect.visibility = View.VISIBLE
+            takePictureEffect.postDelayed({ takePictureEffect.visibility = View.GONE }, 500L)
+
+            //Set captured image
+            capturedPreview.setImageBitmap(bitmap)
 
             //View Gone
             cameraPreview.visibility = View.GONE
-            cameraButton.visibility = View.GONE
+            takePictureButton.visibility = View.GONE
             switchCameraButton.visibility = View.GONE
 
             //View Visible
             capturedPreview.visibility = View.VISIBLE
             backButton.visibility = View.VISIBLE
-            confirmButton.visibility = View.VISIBLE
-
-            //Set captured image
-            capturedPreview.setImageBitmap(bitmap)
+            confirmPictureButton.visibility = View.VISIBLE
         }
     }
 
@@ -116,6 +127,7 @@ class CameraActivity : AppCompatActivity() {
             imageCapture = ImageCapture
                 .Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
                 .build()
 
             try {
@@ -150,9 +162,7 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(photoFile)
-                    val msg = "Photo captured successfully: $savedUri"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_LONG).show()
+                    pictureUri = Uri.fromFile(photoFile)
                 }
             }
         )
@@ -197,8 +207,6 @@ class CameraActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val REQUEST_CODE_PERMISSION = 101
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private val REQUIRED_PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA)
     }
 }
