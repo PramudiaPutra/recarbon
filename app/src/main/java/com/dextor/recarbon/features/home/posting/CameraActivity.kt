@@ -29,7 +29,6 @@ class CameraActivity : AppCompatActivity() {
     private var pictureUri: Uri? = null
     private lateinit var outputDirectory: File
 
-    //    private lateinit var cameraExecutorService: ExecutorService
     private lateinit var binding: ActivityCameraBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -142,11 +141,11 @@ class CameraActivity : AppCompatActivity() {
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(Date())
 
         val photoFile = File(
             outputDirectory,
-            SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-                .format(System.currentTimeMillis()) + ".jpg"
+            "JPEG_${timeStamp}_${UUID.randomUUID()}.jpg",
         )
 
         val outputOptions = ImageCapture.OutputFileOptions
@@ -163,6 +162,7 @@ class CameraActivity : AppCompatActivity() {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     pictureUri = Uri.fromFile(photoFile)
+                    Log.d("filepath", pictureUri.toString())
                 }
             }
         )
@@ -175,11 +175,6 @@ class CameraActivity : AppCompatActivity() {
         return if (mediaDir != null && mediaDir.exists())
             mediaDir else filesDir
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        cameraExecutorService.shutdown()
-//    }
 
     private fun requestingPermissions() {
         if (permissionsGranted()) {

@@ -1,17 +1,12 @@
 package com.dextor.recarbon.features.home.posting
 
-import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.FileProvider
 import com.dextor.recarbon.MainActivity
 import com.dextor.recarbon.R
 import com.dextor.recarbon.constant.MENU_NAVIGATION
@@ -28,17 +23,11 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class SosmedAddActivity : AppCompatActivity() {
-
-    companion object {
-        private const val CAMERA_PERMISSION_CODE = 2
-        private const val CAMERA_REQUEST_CODE = 103
-    }
 
     private lateinit var storageReference: StorageReference
 
@@ -49,21 +38,23 @@ class SosmedAddActivity : AppCompatActivity() {
     private lateinit var sosmedAdapter: SosmedAdapter
     private lateinit var binding: ActivitySosmedAddBinding
 
-    private lateinit var currentPhotoPath: String
+    private lateinit var imagePath: String
     private lateinit var fileName: String
-    private lateinit var contentUri: Uri
-    private lateinit var downloadUrl: Uri
+    private lateinit var imageUri: Uri
+    private lateinit var imageUrl: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySosmedAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val imagePath = intent.getStringExtra(IMAGE_PATH)
-        val imageUri = Uri.parse(imagePath)
+        //getting image path from camera
+        imagePath = intent.getStringExtra(IMAGE_PATH).toString()
+        imageUri = Uri.parse(imagePath)
         binding.storyImage.setImageURI(imageUri)
 
-        binding.storyImage
+        //get filename from image uri
+        fileName = File(imageUri.path).name
 
         list = ArrayList()
         sosmedAdapter = SosmedAdapter(list)
@@ -73,108 +64,20 @@ class SosmedAddActivity : AppCompatActivity() {
         }
 
         binding.postingButton.setOnClickListener {
-//            uploadStory()
-//            binding.progressbar.visibility = View.VISIBLE
+            uploadStory()
+            binding.progressbar.visibility = View.VISIBLE
 
-        }
-    }
-
-//    private fun cameraPermission() {
-//        if (ContextCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.CAMERA
-//            ) != PackageManager.PERMISSION_GRANTED
-//        ) {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
-//                CAMERA_PERMISSION_CODE
-//            )
-//        } else {
-//            dispatchTakePictureIntent()
-//        }
-//    }
-
-
-    @Throws(IOException::class)
-    private fun createImageFile(): File {
-        // Create an image file name
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(Date())
-        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(
-            "JPEG_${timeStamp}_", /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
-        ).apply {
-            // Save a file: path for use with ACTION_VIEW intents
-            currentPhotoPath = absolutePath
-        }
-    }
-
-    private fun dispatchTakePictureIntent() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            // Ensure that there's a camera activity to handle the intent
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                // Create the File where the photo should go
-                val photoFile: File? = try {
-                    createImageFile()
-                } catch (ex: IOException) {
-                    // Error occurred while creating the File
-                    null
-                }
-                // Continue only if the File was successfully created
-                photoFile?.also {
-                    val photoURI: Uri = FileProvider.getUriForFile(
-                        this,
-                        "com.dextor.recarbon.fileprovider",
-                        it
-                    )
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE)
-                }
-            }
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == CAMERA_PERMISSION_CODE) {
-            if (grantResults.isEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                dispatchTakePictureIntent()
-            } else {
-                Toast.makeText(this, "Izinkan Penggunaan Kamera Dahulu", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CAMERA_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                val f = File(currentPhotoPath)
-                binding.storyImage.setImageURI(Uri.fromFile(f))
-                Log.i("fileUri", Uri.fromFile(f).toString())
-
-                fileName = f.name
-                Log.i("filename", fileName)
-
-                contentUri = Uri.fromFile(f)
-            }
         }
     }
 
     private fun uploadStory() {
         storageReference = Firebase.storage.reference.child("uploads").child("camera/$fileName")
-        storageReference.putFile(contentUri).addOnSuccessListener {
+        storageReference.putFile(imageUri).addOnSuccessListener {
 
             storageReference.downloadUrl.addOnSuccessListener { uri ->
-                downloadUrl = uri
-                Log.i("file url", downloadUrl.toString())
-                saveData(downloadUrl)
+                imageUrl = uri
+                Log.i("file url", imageUrl.toString())
+                uploadData(imageUrl)
                 binding.progressbar.visibility = View.GONE
 
                 intentHome()
@@ -185,7 +88,7 @@ class SosmedAddActivity : AppCompatActivity() {
             }
     }
 
-    private fun saveData(downloadUrl: Uri) {
+    private fun uploadData(downloadUrl: Uri) {
         Toast.makeText(this, "upload success", Toast.LENGTH_SHORT).show()
 
         //mengambil uid
@@ -200,7 +103,6 @@ class SosmedAddActivity : AppCompatActivity() {
         val imgUser = R.drawable.user_placeholder
         val username = currentUser?.displayName
         val location = binding.edtLokasiPoting.text.toString()
-        val imgStory = downloadUrl
         val title = binding.edtJudulPoting.text.toString()
         val content = binding.edtDeskripsiPoting.text.toString()
 
@@ -211,7 +113,7 @@ class SosmedAddActivity : AppCompatActivity() {
             username,
             location,
             currentDate.toString(),
-            imgStory.toString(),
+            downloadUrl.toString(),
             title,
             content
         )
@@ -221,7 +123,7 @@ class SosmedAddActivity : AppCompatActivity() {
             database.child("stories").child(database.push().key.toString())
                 .setValue(story)
 
-            sosmedAdapter.notifyDataSetChanged()
+//            sosmedAdapter.notifyDataSetChanged()
 
     }
 
@@ -234,4 +136,3 @@ class SosmedAddActivity : AppCompatActivity() {
         startActivity(intent)
     }
 }
-
